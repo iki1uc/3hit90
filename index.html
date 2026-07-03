@@ -3,7 +3,6 @@
 <script type="module">
   import { RAW } from "../online/raw.js";
 
-  // NC.link Pfade
   const RESPO_MAP = {
     "WpiR": "/WpiR/index.html",
     "dir": "/dir/index.html",
@@ -20,12 +19,7 @@
   // CORE-Daten für jeden RESPO (immer präsent)
   const CORE_DATA = {};
   Object.keys(RAW).forEach(key => {
-    CORE_DATA[key] = {
-      CPU: 0,
-      RAM: 0,
-      GPU: 0,
-      ROM: 0
-    };
+    CORE_DATA[key] = { CPU:0, RAM:0, GPU:0, ROM:0 };
   });
 
   // CORE-Daten aktualisieren
@@ -38,7 +32,6 @@
     });
   }
 
-  // MASTER wechselt alle 1–2 Sekunden
   let masterIndex = 0;
   const keys = Object.keys(RAW);
 
@@ -50,7 +43,6 @@
 
     let out = "RESPO 99 :: 3hit90 MASTER-CORE\n--------------------------------\n";
 
-    // MASTER-RESPO
     out += `MASTER → ${master}\n`;
     out += `NC.link → ${RESPO_MAP[master]}\n`;
     out += `tmp     → ${RAW[master].tmp}\n\n`;
@@ -74,8 +66,6 @@
     document.getElementById("master").textContent = out;
   }
 
-  // alle 1–2 Sekunden MASTER wechseln
   setInterval(render, 1000 + Math.random()*1000);
-
   render();
 </script>
