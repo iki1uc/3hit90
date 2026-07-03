@@ -3,27 +3,62 @@
 <script type="module">
   import { RAW } from "../online/raw.js";
 
-  function judge(status){
-    if(status === "green")  return "OK";
-    if(status === "yellow") return "Übergang blockiert";
-    if(status === "red")    return "FAIL / STOP";
-    if(status === "blue")   return "MASTER";
+  // NC.link Pfade
+  const RESPO_MAP = {
+    "WpiR": "/WpiR/index.html",
+    "dir": "/dir/index.html",
+    "RUN8": "/RUN8/index.html",
+    "FIT": "/FIT/index.html",
+    "FAIL": "/FAIL/index.html",
+    "9vec3tor": "/9vec3tor/index.html",
+    "CLONE": "/CLONE/index.html",
+    "ONLINE": "/online/index.html",
+    "TMP": "/TMP/index.html",
+    "3hit90": "/3hit90/index.html"
+  };
+
+  // CORE-Werte erzeugen
+  function CORE(){
+    return {
+      CPU: Math.floor(Math.random()*100),
+      RAM: Math.floor(Math.random()*100),
+      GPU: Math.floor(Math.random()*100),
+      ROM: Math.floor(Math.random()*100)
+    };
+  }
+
+  // MASTER/SLAVE-Wechsel
+  function nextPair(list){
+    const keys = Object.keys(list);
+    const master = keys[Math.floor(Math.random()*keys.length)];
+    let slave = keys[Math.floor(Math.random()*keys.length)];
+
+    while(slave === master){
+      slave = keys[Math.floor(Math.random()*keys.length)];
+    }
+
+    return { master, slave };
   }
 
   function render(){
-    let out = "RESPO 99 :: 3hit90 MASTER\n--------------------------------\n";
+    const pair = nextPair(RAW);
+    const core = CORE();
 
-    Object.keys(RAW).forEach((key, i) => {
-      const r = RAW[key];
-      const verdict = judge(r.status);
+    let out = "RESPO 99 :: 3hit90 MASTER-CORE\n--------------------------------\n";
 
-      out += `${key.padEnd(10)} → ${verdict}  tmp:${r.tmp}\n`;
-    });
+    out += `MASTER → ${pair.master}  (NC.link: ${RESPO_MAP[pair.master]})  tmp:${RAW[pair.master].tmp}\n`;
+    out += `SLAVE  → ${pair.slave}   (NC.link: ${RESPO_MAP[pair.slave]})   tmp:${RAW[pair.slave].tmp}\n`;
 
-    out += "--------------------------------\nMASTER aktiv\nPrüfung abgeschlossen\n";
+    out += "\n--------------------------------\nCORE-Werte\n";
+    out += `CPU → ${core.CPU}\n`;
+    out += `RAM → ${core.RAM}\n`;
+    out += `GPU → ${core.GPU}\n`;
+    out += `ROM → ${core.ROM}\n`;
+
+    out += "--------------------------------\nMASTER/SLAVE-Wechsel aktiv\n";
+
     document.getElementById("master").textContent = out;
   }
 
   render();
 </script>
-
