@@ -1,71 +1,12 @@
 <pre id="master"></pre>
 
 <script type="module">
-  import { RAW } from "../online/raw.js";
-
-  const RESPO_MAP = {
-    "WpiR": "/WpiR/index.html",
-    "dir": "/dir/index.html",
-    "RUN8": "/RUN8/index.html",
-    "FIT": "/FIT/index.html",
-    "FAIL": "/FAIL/index.html",
-    "9vec3tor": "/9vec3tor/index.html",
-    "CLONE": "/CLONE/index.html",
-    "ONLINE": "/online/index.html",
-    "TMP": "/TMP/index.html",
-    "3hit90": "/3hit90/index.html"
-  };
-
-  // CORE-Daten für jeden RESPO (immer präsent)
-  const CORE_DATA = {};
-  Object.keys(RAW).forEach(key => {
-    CORE_DATA[key] = { CPU:0, RAM:0, GPU:0, ROM:0 };
-  });
-
-  // CORE-Daten aktualisieren
-  function updateCORE(){
-    Object.keys(CORE_DATA).forEach(key => {
-      CORE_DATA[key].CPU = Math.floor(Math.random()*100);
-      CORE_DATA[key].RAM = Math.floor(Math.random()*100);
-      CORE_DATA[key].GPU = Math.floor(Math.random()*100);
-      CORE_DATA[key].ROM = Math.floor(Math.random()*100);
-    });
-  }
-
-  let masterIndex = 0;
-  const keys = Object.keys(RAW);
+  import { MASTER } from "./master.js";
 
   function render(){
-    updateCORE();
-
-    const master = keys[masterIndex];
-    masterIndex = (masterIndex + 1) % keys.length;
-
-    let out = "RESPO 99 :: 3hit90 MASTER-CORE\n--------------------------------\n";
-
-    out += `MASTER → ${master}\n`;
-    out += `NC.link → ${RESPO_MAP[master]}\n`;
-    out += `tmp     → ${RAW[master].tmp}\n\n`;
-
-    out += "CORE (MASTER)\n";
-    out += `CPU → ${CORE_DATA[master].CPU}\n`;
-    out += `RAM → ${CORE_DATA[master].RAM}\n`;
-    out += `GPU → ${CORE_DATA[master].GPU}\n`;
-    out += `ROM → ${CORE_DATA[master].ROM}\n`;
-
-    out += "\n--------------------------------\nSLAVE-RESPOs\n";
-
-    keys.forEach(key => {
-      if(key !== master){
-        out += `${key.padEnd(10)} → tmp:${RAW[key].tmp}  CPU:${CORE_DATA[key].CPU}\n`;
-      }
-    });
-
-    out += "--------------------------------\nMASTER/SLAVE-Wechsel aktiv\n";
-
-    document.getElementById("master").textContent = out;
+    document.getElementById("master").textContent = MASTER();
   }
 
-  setInterval(render, 1000 + Math.random()*1000);
+  setInterval(render, 1000);
   render();
 </script>
