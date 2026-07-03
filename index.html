@@ -17,48 +17,65 @@
     "3hit90": "/3hit90/index.html"
   };
 
-  // CORE-Werte erzeugen
-  function CORE(){
-    return {
-      CPU: Math.floor(Math.random()*100),
-      RAM: Math.floor(Math.random()*100),
-      GPU: Math.floor(Math.random()*100),
-      ROM: Math.floor(Math.random()*100)
+  // CORE-Daten für jeden RESPO (immer präsent)
+  const CORE_DATA = {};
+  Object.keys(RAW).forEach(key => {
+    CORE_DATA[key] = {
+      CPU: 0,
+      RAM: 0,
+      GPU: 0,
+      ROM: 0
     };
+  });
+
+  // CORE-Daten aktualisieren
+  function updateCORE(){
+    Object.keys(CORE_DATA).forEach(key => {
+      CORE_DATA[key].CPU = Math.floor(Math.random()*100);
+      CORE_DATA[key].RAM = Math.floor(Math.random()*100);
+      CORE_DATA[key].GPU = Math.floor(Math.random()*100);
+      CORE_DATA[key].ROM = Math.floor(Math.random()*100);
+    });
   }
 
-  // MASTER/SLAVE-Wechsel
-  function nextPair(list){
-    const keys = Object.keys(list);
-    const master = keys[Math.floor(Math.random()*keys.length)];
-    let slave = keys[Math.floor(Math.random()*keys.length)];
-
-    while(slave === master){
-      slave = keys[Math.floor(Math.random()*keys.length)];
-    }
-
-    return { master, slave };
-  }
+  // MASTER wechselt alle 1–2 Sekunden
+  let masterIndex = 0;
+  const keys = Object.keys(RAW);
 
   function render(){
-    const pair = nextPair(RAW);
-    const core = CORE();
+    updateCORE();
+
+    const master = keys[masterIndex];
+    masterIndex = (masterIndex + 1) % keys.length;
 
     let out = "RESPO 99 :: 3hit90 MASTER-CORE\n--------------------------------\n";
 
-    out += `MASTER → ${pair.master}  (NC.link: ${RESPO_MAP[pair.master]})  tmp:${RAW[pair.master].tmp}\n`;
-    out += `SLAVE  → ${pair.slave}   (NC.link: ${RESPO_MAP[pair.slave]})   tmp:${RAW[pair.slave].tmp}\n`;
+    // MASTER-RESPO
+    out += `MASTER → ${master}\n`;
+    out += `NC.link → ${RESPO_MAP[master]}\n`;
+    out += `tmp     → ${RAW[master].tmp}\n\n`;
 
-    out += "\n--------------------------------\nCORE-Werte\n";
-    out += `CPU → ${core.CPU}\n`;
-    out += `RAM → ${core.RAM}\n`;
-    out += `GPU → ${core.GPU}\n`;
-    out += `ROM → ${core.ROM}\n`;
+    out += "CORE (MASTER)\n";
+    out += `CPU → ${CORE_DATA[master].CPU}\n`;
+    out += `RAM → ${CORE_DATA[master].RAM}\n`;
+    out += `GPU → ${CORE_DATA[master].GPU}\n`;
+    out += `ROM → ${CORE_DATA[master].ROM}\n`;
+
+    out += "\n--------------------------------\nSLAVE-RESPOs\n";
+
+    keys.forEach(key => {
+      if(key !== master){
+        out += `${key.padEnd(10)} → tmp:${RAW[key].tmp}  CPU:${CORE_DATA[key].CPU}\n`;
+      }
+    });
 
     out += "--------------------------------\nMASTER/SLAVE-Wechsel aktiv\n";
 
     document.getElementById("master").textContent = out;
   }
+
+  // alle 1–2 Sekunden MASTER wechseln
+  setInterval(render, 1000 + Math.random()*1000);
 
   render();
 </script>
