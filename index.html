@@ -1,1 +1,29 @@
+<pre id="master"></pre>
+
+<script type="module">
+  import { RAW } from "../online/raw.js";
+
+  function judge(status){
+    if(status === "green")  return "OK";
+    if(status === "yellow") return "Übergang blockiert";
+    if(status === "red")    return "FAIL / STOP";
+    if(status === "blue")   return "MASTER";
+  }
+
+  function render(){
+    let out = "RESPO 99 :: 3hit90 MASTER\n--------------------------------\n";
+
+    Object.keys(RAW).forEach((key, i) => {
+      const r = RAW[key];
+      const verdict = judge(r.status);
+
+      out += `${key.padEnd(10)} → ${verdict}  tmp:${r.tmp}\n`;
+    });
+
+    out += "--------------------------------\nMASTER aktiv\nPrüfung abgeschlossen\n";
+    document.getElementById("master").textContent = out;
+  }
+
+  render();
+</script>
 
