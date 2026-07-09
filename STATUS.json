@@ -1,1 +1,10 @@
+{
+  "module": "3hit90",
+  "active": true,
+  "ready": 81,
+  "invariance": "stable",
+  "dispatch": "M5",
+  "space": "enabled",
+  "null": false
+}
 
