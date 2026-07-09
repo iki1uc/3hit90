@@ -1,1 +1,5 @@
+MODULE: 3hit90
+AXIS: Φ φ φ² φ∞
+ROLE: Spatial Ratio Dispatcher
+SIGNATURE: HIT1-HIT2-HIT3
 
