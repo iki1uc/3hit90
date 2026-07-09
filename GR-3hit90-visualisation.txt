@@ -1,0 +1,59 @@
+────────────────────────────────────────
+3HIT90 :: GOLDEN RATIO SPATIAL EXTENSION
+────────────────────────────────────────
+
+[HIT 1 :: CLAIM]
+The golden ratio extends from line to space
+when its defining property remains invariant:
+self-similarity under recursive subdivision.
+
+────────────────────────────────────────
+
+[HIT 2 :: SHIFT]
+1D → 2D → 3D
+The dimensionality changes,
+but the defining relation does not.
+
+A part mirrors the whole.
+A region mirrors the whole.
+A volume mirrors the whole.
+
+If the mirror survives the shift,
+the extension is valid.
+
+────────────────────────────────────────
+
+[HIT 3 :: INVARIANCE]
+The golden ratio is defined by invariance.
+Invariance is dimension-free.
+Therefore the ratio extends into space.
+
+Recursive self-similarity = spatial φ.
+
+────────────────────────────────────────
+
+[CORE :: ARGUMENT]
+If a proportion is defined by the condition
+that the whole contains the same structural
+relation as one of its parts,
+then any system that preserves this relation
+under subdivision is a valid extension.
+
+The golden ratio satisfies this condition.
+A spatial region can satisfy it too.
+
+Therefore the extension is justified.
+
+────────────────────────────────────────
+
+[FINAL :: CONCLUSION]
+A spatial extension of the golden ratio is valid
+if the division preserves the same self-similar
+relation that defines the ratio in one dimension.
+
+Since this condition can be satisfied in space,
+the extension is mathematically justified.
+
+────────────────────────────────────────
+END OF 3HIT90 VISUALISATION
+────────────────────────────────────────
