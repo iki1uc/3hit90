@@ -1,1 +1,7 @@
+DISPATCH RULES (M₅)
+1 → HIT1
+2 → HIT2
+3 → HIT3
+4 → CORE
+5 → FINAL
 
