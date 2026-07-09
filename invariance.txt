@@ -1,1 +1,6 @@
+INVARIANCE PROOF
+The ratio survives recursion (φ),
+quadrature (φ²),
+and infinity (φ∞).
+Therefore invariance is dimension-free.
 
