@@ -2,50 +2,25 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>3D Cube · RESPO</title>
+<title>LAGE :: Root</title>
 <style>
-body{background:#000;color:#0f0;font-family:monospace;padding:20px;text-align:center;}
-#cube{
-  width:150px;
-  height:150px;
-  margin:100px auto;
-  position:relative;
-  transform-style:preserve-3d;
-  animation:spin 6s linear infinite;
-}
-.face{
-  position:absolute;
-  width:150px;
-  height:150px;
-  background:#111;
-  border:2px solid #0f0;
-  line-height:150px;
-  font-size:24px;
-}
-.front{transform:translateZ(75px);}
-.back{transform:rotateY(180deg) translateZ(75px);}
-.left{transform:rotateY(-90deg) translateZ(75px);}
-.right{transform:rotateY(90deg) translateZ(75px);}
-.top{transform:rotateX(90deg) translateZ(75px);}
-.bottom{transform:rotateX(-90deg) translateZ(75px);}
-@keyframes spin{
-  from{transform:rotateX(0deg) rotateY(0deg);}
-  to{transform:rotateX(360deg) rotateY(360deg);}
-}
+body { background:#000; color:#fff; font-family:monospace; padding:40px; }
 </style>
 </head>
 <body>
 
-<h1>3D Cube Simulation</h1>
+<h1>LAGE :: Root</h1>
 
-<div id="cube">
-  <div class="face front">Front</div>
-  <div class="face back">Back</div>
-  <div class="face left">Left</div>
-  <div class="face right">Right</div>
-  <div class="face top">Top</div>
-  <div class="face bottom">Bottom</div>
-</div>
+<p>Dies ist das Root des LAGE-Moduls.</p>
+
+<ul>
+  <li><a href="./LAGEindex.html">Modulstart</a></li>
+  <li><a href="./LAGEID.html">Identität</a></li>
+  <li><a href="./LAGE-CODE-FINAL.nc">Finaler Code</a></li>
+  <li><a href="./LAGE.json">Konfiguration</a></li>
+  <li><a href="./LAGE.txt">Textidentität</a></li>
+  <li><a href="./README.md">README</a></li>
+</ul>
 
 </body>
 </html>
