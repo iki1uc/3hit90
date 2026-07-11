@@ -1,12 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>RUN8 – Kernel Engine</title>
-</head>
-<body>
-<h1>RUN8 – Kernel Engine</h1>
-<p>HotSwap + ActionReplay + LiveUpdate</p>
-<script src="run8.js"></script>
-</body>
-</html>
+export function run8(mode){
+  return {
+    engine: "RUN8",
+    mode,
+    pulse: Date.now(),
+    respo: {
+      OK: true,
+      FLOW: mode === "pulse",
+      BREAK: false,
+      ECHO: true,
+      VOID: false
+    },
+    orbit: "RUN8 → O12",
+    status: "ACTIVE"
+  };
+}
