@@ -1,20 +1,23 @@
-# 3hit90 Module
+# 3hit90 – Root Quadrant System
 
-3hit90 is the spatial ratio engine of the iki1uc system.
-It processes HIT1 → HIT2 → HIT3 to validate the extension
-of the golden ratio into higher dimensions.
+Das 3hit90‑System besteht aus vier Wurzeln (Root‑Quadranten), die zusammen die neue
+Geometrie‑ und Business‑Logik bilden:
 
-Files:
-- CLAIM.txt
-- GR-3hit90-visualisation.txt
-- ID.txt
-- STATUS.json
-- core.js
-- dispatch.txt
-- index.html
-- invariance.txt
-- master.js
-- modules.map
-- null.txt
-- space.txt
-- visual.txt
+- **[SYS](ca://s?q=SYS_Root_erklaeren)** – System‑Wurzel  
+- **[TEM](ca://s?q=TEM_Root_erklaeren)** – Zeit‑Wurzel  
+- **[ID](ca://s?q=ID_Root_erklaeren)** – Identitäts‑Wurzel  
+- **[OP](ca://s?q=Operator_Root_erklaeren)** – Operator‑Wurzel (plus/minus(sys(tem)+/-))
+
+Diese vier Wurzeln verbinden sich mit vier Geometrie‑Systemen:
+
+- **[TΩ](ca://s?q=T_Omega_System_erklaeren)** – Tetraeder + Oktagon  
+- **[XU](ca://s?q=XU_System_erklaeren)** – Achsenkreuz + Unified Core  
+- **[Φ4](ca://s?q=Phi4_System_erklaeren)** – Vierfach‑Achsenfamilie  
+- **[O12](ca://s?q=O12_System_erklaeren)** – OctaCore² + 12D‑Fusion
+
+Diese vier Geo‑Systeme bilden zusammen die **3hit90‑Geometrie**.
+
+---
+
+## Ordnerstruktur
+
