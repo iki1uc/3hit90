@@ -1,5 +1,8 @@
 {
   "BRM": {
+    "geometry": "12D-BRM",
+    "integration": ["OR", "BIT", "LAGE", "TEM", "iki", "bir", "uc"],
+    "tp_sets": ["tp3", "tp6", "tp9", "tp4", "tp8", "tp12"],
     "modules": {
       "LAGE_business": {
         "position": "dynamic",
@@ -26,9 +29,6 @@
         "finalization": "optimized_outcome"
       }
     },
-    "geometry": "12D-BRM",
-    "integration": ["OR", "BIT", "LAGE", "TEM", "iki", "bir", "uc"],
-    "tp_sets": ["tp3", "tp6", "tp9", "tp4", "tp8", "tp12"],
     "status": "active"
   }
 }
