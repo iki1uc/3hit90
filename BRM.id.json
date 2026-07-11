@@ -1,0 +1,34 @@
+{
+  "BRM": {
+    "modules": {
+      "LAGE_business": {
+        "position": "dynamic",
+        "zustand": "market_state",
+        "risk": "adaptive"
+      },
+      "MARKT": {
+        "flow": "bidirectional",
+        "demand": "variable",
+        "supply": "variable",
+        "volume": "scaled"
+      },
+      "BOERSE": {
+        "price": "volatile",
+        "liquidity": "dynamic",
+        "depth": "multi_level"
+      },
+      "reCALL": {
+        "history": "pattern_memory",
+        "replay": "temporal_reconstruction"
+      },
+      "reFINAL": {
+        "projection": "future_state",
+        "finalization": "optimized_outcome"
+      }
+    },
+    "geometry": "12D-BRM",
+    "integration": ["OR", "BIT", "LAGE", "TEM", "iki", "bir", "uc"],
+    "tp_sets": ["tp3", "tp6", "tp9", "tp4", "tp8", "tp12"],
+    "status": "active"
+  }
+}
