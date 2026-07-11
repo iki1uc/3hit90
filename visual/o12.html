@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>O12 – Morphing Geometry Engine</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:Consolas, monospace; }
+h1 { color:#6cf; }
+canvas { background:#111; border:1px solid #333; margin-top:20px; }
+</style>
+
+</head>
+<body>
+
+<h1>O12 – Morphing Geometry Engine</h1>
+<p>TΩ + XU + Φ4 → 12D OctaCore² Fusion</p>
+
+<canvas id="geo" width="900" height="600"></canvas>
+
+<script>
+// Canvas
+const c = document.getElementById("geo");
+const ctx = c.getContext("2d");
+
+// Helper
+function dot(x,y,color="#0f0"){ ctx.fillStyle=color; ctx.beginPath(); ctx.arc(x,y,4,0,Math.PI*2); ctx.fill(); }
+function line(a,b,c,d,color="#6cf"){ ctx.strokeStyle=color; ctx.beginPath(); ctx.moveTo(a,b); ctx.lineTo(c,d); ctx.stroke(); }
+
+// Morphing factor
+let t = 0;
+
+// Animation loop
+function draw(){
+    ctx.clearRect(0,0,900,600);
+
+    // Tetraeder (TΩ)
+    const tetra = [
+        [200+t*20,150+t*10],
+        [450-t*10,100+t*20],
+        [700-t*20,150+t*10],
+        [450+t*5,300-t*20]
+    ];
+
+    // Oktagon (XU)
+    function oktagon(cx,cy,r){
+        let pts=[];
+        for(let i=0;i<8;i++){
+            let a=(Math.PI*2/8)*i + t*0.05;
+            pts.push([cx+Math.cos(a)*r, cy+Math.sin(a)*r]);
+        }
+        return pts;
+    }
+
+    const iki = oktagon(200,450,80+t*2);
+    const bir = oktagon(450,450,80+t*2);
+    const uc  = oktagon(700,450,80+t*2);
+
+    // Draw Tetraeder
+    tetra.forEach(p=>dot(p[0],p[1],"#0f0"));
+    for(let i=0;i<tetra.length;i++){
+        for(let j=i+1;j<tetra.length;j++){
+            line(tetra[i][0],tetra[i][1], tetra[j][0],tetra[j][1], "#6cf");
+        }
+    }
+
+    // Draw Oktagons
+    function drawOktagon(pts,color){
+        pts.forEach(p=>dot(p[0],p[1],color));
+        for(let i=0;i<pts.length;i++){
+            let j=(i+1)%pts.length;
+            line(pts[i][0],pts[i][1], pts[j][0],pts[j][1], color);
+        }
+    }
+
+    drawOktagon(iki,"#f00");
+    drawOktagon(bir,"#0f0");
+    drawOktagon(uc,"#00f");
+
+    t += 0.5;
+    requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
+</body>
+</html>
