@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>iki1uc – Business Rücken Modul (BRM)</title>
+
+<meta name="signature" content="IKI1UC-BRM">
+<meta name="respo-id" content="BRM-1212">
+
+<script type="module">
+import { OR_INJECT } from "../OR/OR_INJECT.js";
+OR_INJECT("BRM");
+</script>
+
+<style>
+body { background:#000; color:#0f0; font-family:Consolas, monospace; padding:20px; }
+h1, h2 { color:#6cf; }
+pre { background:#111; border:1px solid #333; padding:12px; }
+a { color:#6cf; display:block; margin:8px 0; }
+hr { border:1px solid #333; margin:25px 0; }
+</style>
+</head>
+
+<body>
+
+<h1>iki1uc – Business Rücken Modul (BRM)</h1>
+<p>12D‑Business‑Geometrie für Markt, Börse, reCALL, reFINAL und LAGE(Business)</p>
+
+<hr>
+
+<h2>BRM‑Daten</h2>
+<pre>
+GEOMETRIE = 12D-BRM
+MODULE = LAGE(Business), Markt, Börse, reCALL, reFINAL
+INTEGRATION = OR + BIT + LAGE + TEM + iki + bir + uc
+TP-Sets = tp3 / tp6 / tp9 / tp4 / tp8 / tp12
+STATUS = Aktiv
+</pre>
+
+<hr>
+
+<h2>Business‑Module</h2>
+<a href="./LAGE_business.html">LAGE – Business‑Position</a>
+<a href="./Markt.html">Markt – Flow</a>
+<a href="./Boerse.html">Börse – Exchange</a>
+<a href="./reCALL.html">reCALL – Historie</a>
+<a href="./reFINAL.html">reFINAL – Zukunft</a>
+
+<hr>
+
+<h2>Hinweis</h2>
+<pre>
+Dieses Modul bildet die Business‑Geometrie im Rücken des 12D‑Systems.
+Alle Mechanismen laufen über OR_INJECT + RESPO.
+Alle tp‑Achsen werden dynamisch skaliert.
+Alle Business‑Flows sind live‑update‑fähig.
+</pre>
+
+</body>
+</html>
