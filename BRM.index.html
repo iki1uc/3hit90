@@ -2,66 +2,59 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>RAUM‑ID :: Raum‑Pulse</title>
+<title>AXI‑ATOR · RAW‑SYS‑IKI</title>
 
 <style>
-  body { background:#000; color:#0ff; font-family:monospace; padding:40px; }
-  .c { border:1px solid #0ff; padding:20px; width:420px; margin-bottom:20px; }
-  h1 { margin:0 0 20px 0; }
-  .pulse { animation:pulse 1.4s infinite; }
-  @keyframes pulse { 0%{opacity:0.3;} 50%{opacity:1;} 100%{opacity:0.3;} }
-
-  .idbox { border:1px solid #055; padding:10px; margin-top:20px; color:#5ff; }
-  .errlink a { color:#f33; text-decoration:none; }
-  .errlink a:hover { color:#ff0; }
+    body {
+        background: #0a0a0a;
+        color: #e6e6e6;
+        font-family: Consolas, monospace;
+        padding: 30px;
+    }
+    h1 { color: #ffcc00; }
+    h2 { color: #ffaa00; margin-top: 40px; }
+    .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        background: #ffaa00;
+        color: #000;
+        border-radius: 4px;
+        margin: 6px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .btn:hover {
+        background: #ffcc33;
+    }
 </style>
 </head>
 
 <body>
 
-<h1>RAUM‑ID :: Raum‑Pulse</h1>
+<h1>AXI‑ATOR · RAW‑SYS‑IKI</h1>
+<p>Achsen‑Dispatcher für RAW‑Engine, 3TH‑Engine und Α64‑Achsenfamilie.</p>
 
-<div class="c">
-  <h3>Raum‑Schwingung</h3>
-  <pre id="out" class="pulse"></pre>
-</div>
+<h2>PRIMARY‑Achsen</h2>
+<a class="btn" href="error.html?axis=X&id=X-001&group=primary&depth=0.40&mode=RAW">X</a>
+<a class="btn" href="error.html?axis=Y&id=Y-001&group=primary&depth=0.40&mode=RAW">Y</a>
+<a class="btn" href="error.html?axis=Z&id=Z-001&group=primary&depth=0.40&mode=RAW">Z</a>
 
-<div class="idbox">
-  <strong>ID‑Stellung:</strong><br>
-  AXIOM‑ID: RAUM-ID‑001<br>
-  CORE: Φ<br>
-  POS: (3, Φ)<br>
-  CODE: Φ<br>
-  RESPO: ((RAUM-ID))
-</div>
+<h2>SECONDARY‑Achsen</h2>
+<a class="btn" href="error.html?axis=T&id=T-001&group=secondary&depth=0.50&mode=RAW">T</a>
+<a class="btn" href="error.html?axis=S&id=S-001&group=secondary&depth=0.50&mode=RAW">S</a>
 
-<div class="errlink">
-  <h3>ERROR‑Modus</h3>
+<h2>MOTION‑Achsen</h2>
+<a class="btn" href="error.html?axis=MOVE&id=MOVE-001&group=motion&depth=0.60&mode=RAW">MOVE</a>
+<a class="btn" href="error.html?axis=STATE&id=STATE-001&group=motion&depth=0.60&mode=RAW">STATE</a>
+<a class="btn" href="error.html?axis=FLOW&id=FLOW-001&group=motion&depth=0.70&mode=RAW">FLOW</a>
 
-  <a href="https://iki1uc.github.io/error/error.html?from=((RAUM-ID))&mode=SONNE&hint=Raum-Pulse+Erkenntnis">☀️ SONNE</a><br>
-  <a href="https://iki1uc.github.io/error/error.html?from=((RAUM-ID))&mode=MOND&hint=Raum-Pulse+Hinweis">🌙 MOND</a><br>
-  <a href="https://iki1uc.github.io/error/error.html?from=((RAUM-ID))&mode=MARS&hint=Raum-Pulse+Schwarzes+Loch">🔥 MARS</a>
-</div>
+<h2>3TH‑Tri‑Core‑Achsen</h2>
+<a class="btn" href="error.html?axis=alpha&id=alpha-001&group=tri-core&depth=0.70&mode=3TH">alpha</a>
+<a class="btn" href="error.html?axis=beta&id=beta-001&group=tri-core&depth=0.75&mode=3TH">beta</a>
+<a class="btn" href="error.html?axis=gamma&id=gamma-001&group=tri-core&depth=0.80&mode=3TH">gamma</a>
 
-<script>
-// --- RAUM-ID CORE ---
-function raumPulse() {
-  const x = (Math.random()*100).toFixed(2);
-  const y = (Math.random()*100).toFixed(2);
-  const z = (Math.random()*100).toFixed(2);
-
-  return `RAUM‑PULSE → X:${x}  Y:${y}  Z:${z}`;
-}
-
-// --- RENDER ---
-function run() {
-  const o = document.getElementById("out");
-  o.innerText = raumPulse();
-}
-
-setInterval(run, 900);
-run();
-</script>
+<h2>Erweiterung (Slots 15–64)</h2>
+<a class="btn" href="ID.html">Achsen‑Register öffnen</a>
 
 </body>
 </html>
