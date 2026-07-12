@@ -15,26 +15,29 @@ button{background:#111;color:#0f0;border:1px solid #333;padding:8px 16px;margin:
 <body>
 
 <h1>3hit90 – O12 HUB</h1>
-<p>TΩ + XU + Φ4 → O12 (OctaCore² + 12D‑Fusion)</p>
+<p>TΩ + XU + Φ4 → 12D OctaCore² Fusion</p>
 
 <button onclick="pulse()">RUN8 Pulse</button>
 <button onclick="loadCube()">RESPO Cube</button>
 <button onclick="loadTime()">TIME 3×11</button>
+<button onclick="loadPhi()">Φ4 Achsen</button>
+<button onclick="loadBRM()">BRM Modul</button>
 
 <pre id="out">Bereit...</pre>
 
 <script type="module">
 import { O12 } from "./O12.js";
-import { run8 } from "./RUN8.js";
+import { RUN8 } from "./RUN8.js";
 import { loadRESPO } from "./RESPO.js";
 import { TIME } from "./TIME.js";
 import { PHI4 } from "./PHI4.js";
+import { BRM } from "./BRM.js";
 
 // ------------------------------------------------------
 // HUB – alles zusammenführen
 // ------------------------------------------------------
 function pulse(){
-  const p = run8("pulse");
+  const p = RUN8("pulse");
   out.textContent = JSON.stringify({
     hub: "3hit90",
     o12: O12,
@@ -57,6 +60,22 @@ function loadTime(){
   out.textContent = JSON.stringify({
     hub: "3hit90",
     time: TIME,
+    stamp: Date.now()
+  }, null, 2);
+}
+
+function loadPhi(){
+  out.textContent = JSON.stringify({
+    hub: "3hit90",
+    phi4: PHI4,
+    stamp: Date.now()
+  }, null, 2);
+}
+
+function loadBRM(){
+  out.textContent = JSON.stringify({
+    hub: "3hit90",
+    brm: BRM,
     stamp: Date.now()
   }, null, 2);
 }
