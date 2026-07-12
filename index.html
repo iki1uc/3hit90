@@ -7,10 +7,8 @@
 <style>
 body { background:#000; color:#0f0; font-family:Consolas, monospace; padding:20px; }
 h1, h2 { color:#6cf; }
-a { color:#6cf; display:block; margin:10px 0; font-size:18px; }
-hr { border:1px solid #333; margin:25px 0; }
-pre { background:#111; padding:12px; border:1px solid #333; }
 button { background:#111; color:#0f0; border:1px solid #333; padding:8px 16px; margin:4px; }
+pre { background:#111; padding:12px; border:1px solid #333; margin-top:20px; }
 </style>
 
 </head>
@@ -19,56 +17,76 @@ button { background:#111; color:#0f0; border:1px solid #333; padding:8px 16px; m
 <h1>3hit90 – O12 HUB</h1>
 <p>TΩ + XU + Φ4 → O12 (OctaCore² + 12D‑Fusion)</p>
 
-<hr>
+<button onclick="pulse()">RUN8 Pulse</button>
+<button onclick="loadCube()">RESPO Cube</button>
+<button onclick="loadTime()">TIME 3×11</button>
+<button onclick="loadPhi()">Φ4 Achsen</button>
+<button onclick="loadBRM()">BRM Modul</button>
+<button onclick="loadO12()">O12 Engine</button>
 
-<h2>Geometrie</h2>
-<a href="./visual/o12.html">O12 – Morphing Geometry Engine</a>
+<pre id="out">Bereit...</pre>
 
-<hr>
+<script>
+// ------------------------------------------------------
+// ALTES 3hit90 – FUNKTIONIERENDE TRIGGER
+// ------------------------------------------------------
 
-<h2>Business Module (BRM)</h2>
-<a href="./BRM/BRM.index.html">BRM – Business Rücken Modul</a>
+// RUN8
+function pulse(){
+  const p = {
+    engine: "RUN8",
+    mode: "pulse",
+    stamp: Date.now()
+  };
+  out.textContent = JSON.stringify(p, null, 2);
+}
 
-<hr>
+// RESPO Cube
+async function loadCube(){
+  const res = await fetch("./RESPO/cube.html").then(r => r.text()).catch(()=>null);
+  out.textContent = res ? res : "Cube nicht gefunden";
+}
 
-<h2>TOOLOMAT</h2>
-<a href="./TOOLOMAT/toolomat_dom.html">TOOLOMAT DOM – Struktur/Masse + Achsenbildung</a>
+// TIME
+function loadTime(){
+  const t = {
+    raster: "3×11",
+    rows: 3,
+    cols: 11,
+    stamp: Date.now()
+  };
+  out.textContent = JSON.stringify(t, null, 2);
+}
 
-<hr>
+// Φ4
+function loadPhi(){
+  const phi = {
+    phi: "Φ",
+    phi1: "φ",
+    phi2: "φ²",
+    phiinfty: "φ∞",
+    stamp: Date.now()
+  };
+  out.textContent = JSON.stringify(phi, null, 2);
+}
 
-<h2>TIME Raster</h2>
-<a href="./TIME/index.html">TIME 3×11 – Scroll + Zoom</a>
+// BRM
+async function loadBRM(){
+  const res = await fetch("./BRM/BRM.json").then(r => r.json()).catch(()=>null);
+  out.textContent = JSON.stringify(res || "BRM nicht gefunden", null, 2);
+}
 
-<hr>
-
-<h2>RUN8 Engine</h2>
-<a href="./RUN8/run8.html">RUN8 Kernel Engine</a>
-
-<hr>
-
-<h2>RESPO Cube</h2>
-<a href="./RESPO/cube.html">3D Cube – Achsen</a>
-
-<hr>
-
-<h2>RAUM‑ID Pulse</h2>
-<a href="./RAUM/raum_id.html">RAUM‑ID :: Raum‑Pulse</a>
-
-<hr>
-
-<h2>System Info</h2>
-<pre>
-O12 = OctaCore² + 12D Fusion
-TΩ  = Tetraeder + Oktagon
-XU  = Achsenkreuz + Unified Core
-Φ4  = Φ-Achsenfamilie (iki/bir/uc)
-BRM = Business Rücken Modul
-TIME = 3×11 Raster
-TOOLOMAT = DOM + Achsenbildung
-RUN8 = Kernel Engine
-RESPO = Cube + Response
-RAUM-ID = Raum-Pulse
-</pre>
+// O12
+function loadO12(){
+  const o12 = {
+    core: "OctaCore²",
+    fusion: "12D",
+    geo: ["TΩ","XU","Φ4"],
+    stamp: Date.now()
+  };
+  out.textContent = JSON.stringify(o12, null, 2);
+}
+</script>
 
 </body>
 </html>
