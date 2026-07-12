@@ -1,6 +1,197 @@
-<ROOM_PIPELINE>
-SOURCE: pipeline4
-TARGET: iki1uc.space
-CONTENT: PLACEMENT + DISTRIBUTION
-FLOW: AU → RA → iki1uc.space
-</ROOM_PIPELINE>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>SCAN‑HUB BIOS</title>
+
+<style>
+    body {
+        margin:0;
+        background:#050505;
+        color:#00ffcc;
+        font-family:Consolas, monospace;
+        overflow:hidden;
+    }
+
+    #boot {
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        text-align:center;
+        opacity:0;
+        animation:fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+        to { opacity:1; }
+    }
+
+    .seq {
+        margin-top:20px;
+        font-size:22px;
+        letter-spacing:4px;
+        text-shadow:0 0 12px #00ffcc;
+        opacity:0;
+        animation:seqAnim 3s forwards;
+        animation-delay:1.5s;
+    }
+
+    @keyframes seqAnim {
+        to { opacity:1; }
+    }
+
+    #startbtn {
+        margin-top:40px;
+        padding:12px 30px;
+        font-size:20px;
+        background:#00ffcc;
+        color:#000;
+        border:none;
+        cursor:pointer;
+        opacity:0;
+        animation:btnAnim 3s forwards;
+        animation-delay:3.5s;
+    }
+
+    @keyframes btnAnim {
+        to { opacity:1; }
+    }
+
+    #main {
+        display:none;
+        padding:40px;
+        font-size:18px;
+    }
+
+    .metric {
+        margin:20px 0;
+        padding:20px;
+        border:1px solid #00ffcc;
+        background:#0a0a0a;
+        box-shadow:0 0 15px #003333 inset;
+    }
+
+    .bar {
+        height:12px;
+        background:#003333;
+        margin-top:10px;
+        border-radius:4px;
+        overflow:hidden;
+    }
+
+    .fill {
+        height:100%;
+        background:#00ffcc;
+        width:0%;
+        transition:width 1.5s ease;
+    }
+
+    #atmo {
+        margin-top:30px;
+        padding:20px;
+        border:1px solid #00ffcc;
+        background:#0a0a0a;
+        font-size:20px;
+        box-shadow:0 0 20px #004444 inset;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- BIOS STARTSCREEN -->
+<div id="boot">
+    <div style="font-size:32px; text-shadow:0 0 15px #00ffcc;">
+        SCAN‑HUB BIOS
+    </div>
+    <div style="margin-top:10px; opacity:0.8;">
+        Unified Scan Law v1.0
+    </div>
+
+    <div class="seq">
+        Φ → φ → φ² → φ∞  
+        <br>
+        <small>Startsequenz geladen</small>
+    </div>
+
+    <button id="startbtn" onclick="startHub()">START</button>
+</div>
+
+<!-- MAIN SCANNER -->
+<div id="main">
+    <h2>SEINS‑LAGE Scanner</h2>
+
+    <div class="metric">
+        DOM‑Dichte
+        <div class="bar"><div id="domFill" class="fill"></div></div>
+    </div>
+
+    <div class="metric">
+        Interaktivität
+        <div class="bar"><div id="intFill" class="fill"></div></div>
+    </div>
+
+    <div class="metric">
+        Textlast
+        <div class="bar"><div id="txtFill" class="fill"></div></div>
+    </div>
+
+    <div class="metric">
+        Atmosphärische Bewertung
+        <div id="atmo">Berechne Seins‑Lage…</div>
+    </div>
+</div>
+
+<script>
+function startHub(){
+    document.getElementById("boot").style.display = "none";
+    document.getElementById("main").style.display = "block";
+
+    // DOM-Dichte
+    const total = document.querySelectorAll('*').length;
+    const domScore = Math.min(100, total / 3);
+
+    // Interaktivität
+    const interactive = document.querySelectorAll('button, input, select, textarea, a[href]').length;
+    const intScore = Math.min(100, interactive * 10);
+
+    // Textlast
+    const text = document.body.innerText.length;
+    const txtScore = Math.min(100, text / 20);
+
+    // Atmosphärische Bewertung
+    const atmo = document.getElementById("atmo");
+    let atmoText = "";
+
+    const sum = domScore + intScore + txtScore;
+
+    if(sum < 80){
+        atmoText = "ruhig, minimal, klar — niedrige Seins‑Lage";
+    } else if(sum < 160){
+        atmoText = "aktiv, funktional, fokussiert — mittlere Seins‑Lage";
+    } else if(sum < 240){
+        atmoText = "reich, komplex, vielschichtig — hohe Seins‑Lage";
+    } else {
+        atmoText = "überladen, intensiv, atmosphärisch dicht — maximale Seins‑Lage";
+    }
+
+    atmo.innerText = atmoText;
+
+    // Balken animieren
+    document.getElementById("domFill").style.width = domScore + "%";
+    document.getElementById("intFill").style.width = intScore + "%";
+    document.getElementById("txtFill").style.width = txtScore + "%";
+
+    // Rückgabe an SCAN-HUB
+    parent.postMessage({
+        dom_density: domScore,
+        interactivity: intScore,
+        textload: txtScore,
+        atmosphere: atmoText
+    }, "*");
+}
+</script>
+
+</body>
+</html>
