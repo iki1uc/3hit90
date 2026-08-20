@@ -1,1 +1,13 @@
+function SUITE_SEE_IMPORT(file) {
+
+    // 1 — RESPO-Hardware prüfen
+    syn.check(file);
+    sync.stabilize();
+    arg.sync.route(file);
+
+    // 2 — NC-ENGINE Freigabe
+    if (NCENGINE.release()) {
+        suite.see.add(file);
+    }
+}
 
