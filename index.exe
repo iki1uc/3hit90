@@ -1,0 +1,138 @@
+📘 Dokumentation · index.html
+(BUSINESS · CLOSED · NO‑CLONE · technisch präzise)
+
+🧩 1. Zweck der Datei
+index.html ist die Hauptseite deiner Engine.
+Sie übernimmt:
+
+Initialisierung aller Module
+
+Darstellung der 81‑Matrix
+
+Aktivierung der 7SENSE‑Zustände
+
+Start der SYN‑Engine
+
+Laden des WRAIGHT‑Kernels
+
+Aktivierung des RESOLVER‑Systems
+
+Tastatur‑Steuerung
+
+Auto‑Modus
+
+Live‑Log
+
+Damit ist index.html der Startpunkt, der alles zusammenführt.
+
+🧱 2. Geladene Module (über <script>)
+Modul	Aufgabe
+syn.core.js	Kern der SYN‑Engine (Triangle, Sink, Source)
+syn/	Sense‑Zustände, Partikel, Energiefluss
+AIR6D_MOVE.js	6D‑Bewegungslogik
+pipeline.js	HDF‑Pipeline‑Controller
+RAW/	Rohmodule, TMP‑Daten
+r.md	Systemnotizen
+syn1.html	Testseite für SYN‑Engine
+
+
+Alle Module werden von index.html geladen und miteinander verbunden.
+
+🧩 3. Aufbau der Seite
+3.1 Matrix‑Panel
+81 Felder (d1–w9)
+
+Jede Zelle klickbar
+
+Jeder Klick erzeugt einen TMP‑Pfad
+
+Wird vom RESOLVER weiterverarbeitet
+
+3.2 7SENSE‑Panel
+ghost
+
+help
+
+error
+
+miss
+
+fit
+
+fin
+
+rdy
+
+bioldung
+
+Jeder Zustand ist klickbar und wird vom WRAIGHT‑Kernel analysiert.
+
+3.3 SYN‑Engine‑Canvas
+Triangle
+
+Sink
+
+Source
+
+Partikel
+
+Energiefluss
+
+Visualisiert den Systemstatus live.
+
+3.4 COACH‑Panel
+Zeigt die vier Lebens‑Ordner:
+
+Mobilität
+
+Wohnen
+
+Arbeit
+
+Persönlichkeit
+
+Wird dynamisch aktualisiert.
+
+3.5 Live‑Log
+Zeigt jede Aktion, jeden Resolver‑Schritt, jeden Sense‑Impuls.
+
+⚙️ 4. Steuerung (Keyboard)
+Taste	Funktion
+b	Boot (Start der Engine)
+Leertaste	Step (ein Schritt im Resolver)
+r	Reset
+1	#SLIDE
+2	#HDFRESPO
+3	#ID
+a	Auto‑Modus
+
+
+Damit ist die Seite vollständig interaktiv.
+
+🔁 5. Ablauf nach BOOT
+Matrix wird geladen
+
+7SENSE wird aktiv
+
+SYN‑Engine startet
+
+Kernel analysiert Sense
+
+Resolver verarbeitet Aufträge
+
+Auto‑Modus übernimmt Loop
+
+Live‑Log zeigt alles in Echtzeit
+
+Alles läuft in einer einzigen HTML‑Seite.
+
+🔒 6. CLOSED · NO‑CLONE · BUSINESS
+Diese Dokumentation gilt für eine proprietäre Engine.
+
+CLOSED: Keine Weitergabe, kein Fork, kein Clone
+
+NO‑CLONE: Repository darf nicht gespiegelt werden
+
+BUSINESS: Nutzung nur mit Genehmigung von iki1uc
+
+Branding iki1uc wieimmer bleibt bestehen
