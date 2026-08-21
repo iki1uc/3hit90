@@ -1,161 +1,130 @@
-Die Menüführung deiner Engine — einfach erklärt
-🧩 1. BOOT (Startknopf)
-Wenn du b drückst oder auf BOOT klickst:
+# Menüführung · Engine-Dokumentation
+CLOSED · NO-CLONE · BUSINESS
 
-Die Engine startet
+Dieses Dokument erklärt die komplette Menüführung deiner Engine.
+Alle Bereiche sind klar getrennt und logisch aufgebaut.
 
-SYN‑Engine wird geladen
+---
 
-RAW‑Module werden eingelesen
+## 🧩 1. BOOT (Start)
+Taste: **b**
 
-Pipeline wird aktiviert
+- Engine startet
+- SYN-Engine wird geladen
+- RAW-Daten werden eingelesen
+- Pipeline wird aktiviert
+- Live-Log beginnt
 
-Live‑Log beginnt
+→ [BOOT erklären](ca://s?q=Erklaere_BOOT)
 
-BOOT ist also dein Motorstart.
+---
 
-→ BOOT erklären
+## 🧩 2. Matrix (81 Felder)
+- 81 klickbare Zellen (d1–w9)
+- Jeder Klick erzeugt einen TMP-Pfad
+- Pfad wird an den Resolver übergeben
 
-🧩 2. Matrix‑Panel (81 Felder)
-Du siehst ein Feld mit 81 Zellen (d1–w9).
-Jede Zelle ist klickbar.
+Matrix = Aktionsmenü
 
-Wenn du eine Zelle anklickst:
+→ [Matrix erklären](ca://s?q=Erklaere_81_Matrix)
 
-Die Zelle erzeugt einen TMP‑Pfad
+---
 
-Dieser Pfad wird an den Resolver übergeben
+## 🧩 3. 7SENSE (8 Buttons)
+Zustände:
+ghost · help · error · miss · fit · fin · rdy · bioldung
 
-Der Resolver entscheidet, was passiert
+- Jeder Zustand ist klickbar
+- Kernel analysiert Cause + Allowed
 
-Die Matrix ist also dein Menü für Aktionen.
+7SENSE = Diagnosemenü
 
-→ Matrix erklären
+→ [7SENSE erklären](ca://s?q=Erklaere_7SENSE)
 
-🧩 3. 7SENSE‑Panel (8 Buttons)
-Du hast 8 Zustände:
+---
 
-ghost
+## 🧩 4. SYN-Engine (Canvas)
+Triangle · Sink · Source · Partikel · Energiefluss
 
-help
+- reine Visualisierung
+- zeigt Engine-Aktivität
 
-error
+SYN = Visualmenü
 
-miss
+→ [SYN-Engine erklären](ca://s?q=Erklaere_SYN_Engine)
 
-fit
+---
 
-fin
+## 🧩 5. COACH (Ordner)
+Mobilität · Wohnen · Arbeit · Persönlichkeit
 
-rdy
+- zeigt aktiven Systembereich
+- aktualisiert sich automatisch
 
-bioldung
+COACH = Ordnermenü
 
-Wenn du einen Zustand anklickst:
+→ [COACH erklären](ca://s?q=Erklaere_COACH_System)
 
-Der WRAIGHT‑Kernel analysiert ihn
+---
 
-Er gibt Cause (Ursache)
+## 🧩 6. Resolver (Tastatur)
+Taste | Aktion
+----- | ------
+1 | #SLIDE  
+2 | #HDFRESPO  
+3 | #ID  
+Leertaste | Step  
+r | Reset  
+a | Auto-Modus  
 
-Und Allowed (was erlaubt ist)
+Resolver = Befehlsmenü
 
-Das ist dein Diagnose‑Menü.
+→ [Resolver erklären](ca://s?q=Erklaere_RESOLVER)
 
-→ 7SENSE erklären
+---
 
-🧩 4. SYN‑Engine‑Canvas
-Das ist der Bereich mit:
+## 🧩 7. Auto-Modus
+Taste: **a**
 
-Triangle
+- Engine führt Befehle automatisch aus
+- Resolver läuft im Loop
 
-Sink
+Auto = Autopilotmenü
 
-Source
+→ [Auto-Modus erklären](ca://s?q=Erklaere_Auto_Modus)
 
-Partikeln
+---
 
-Energiefluss
+## 🧩 8. Live-Log
+Zeigt:
 
-Das ist keine Steuerung, sondern Visualisierung.
-Es zeigt dir, wie die Engine gerade arbeitet.
-
-→ SYN‑Engine erklären
-
-🧩 5. COACH‑Panel
-Hier siehst du:
-
-Mobilität
-
-Wohnen
-
-Arbeit
-
-Persönlichkeit
-
-Das ist dein Ordner‑Menü, das zeigt,
-welcher Bereich gerade aktiv ist.
-
-→ COACH erklären
-
-🧩 6. RESOLVER‑Menü (Tastatur)
-Hier ist die eigentliche Steuerung:
-
-Taste	Aktion
-1	#SLIDE
-2	#HDFRESPO
-3	#ID
-Leertaste	Step
-r	Reset
-a	Auto‑Modus
-
-
-Das ist dein Befehls‑Menü.
-
-→ Resolver erklären
-
-🧩 7. Auto‑Modus
-Wenn du a drückst:
-
-Die Engine führt Befehle automatisch aus
-
-Du musst nichts mehr klicken
-
-Der Resolver läuft im Loop
-
-Das ist dein Autopilot‑Menü.
-
-→ Auto‑Modus erklären
-
-🧩 8. Live‑Log
-Hier siehst du:
-
-jeden Klick
-
-jeden TMP‑Pfad
-
-jede Sense‑Analyse
-
-jeden Resolver‑Schritt
-
-jeden Auto‑Impuls
-
-Das ist dein Status‑Menü.
-
-→ Live‑Log erklären
-
-⭐ Kurz gesagt: Die Menüführung ist so aufgebaut
-BOOT → Start
-
-Matrix → Aktionen
-
-7SENSE → Diagnose
-
-SYN‑Canvas → Visualisierung
-
-COACH → Ordner
-
-Resolver (1/2/3) → Befehle
-
-Auto‑Modus (a) → Automatik
-
-Live‑Log → Anzeige
+- Klicks
+- TMP-Pfade
+- Sense-Analysen
+- Resolver-Schritte
+- Auto-Impulse
+
+Live-Log = Statusmenü
+
+→ [Live-Log erklären](ca://s?q=Erklaere_Live_Log)
+
+---
+
+## ⭐ Zusammenfassung
+Menüstruktur:
+
+BOOT → Start  
+Matrix → Aktionen  
+7SENSE → Diagnose  
+SYN → Visualisierung  
+COACH → Ordner  
+Resolver → Befehle  
+Auto → Automatik  
+Live-Log → Anzeige
+
+---
+
+## CLOSED · NO-CLONE · BUSINESS
+Keine Weitergabe, kein Fork, kein Clone.
+Nutzung nur mit Genehmigung von iki1uc.
+Branding "iki1uc wieimmer" bleibt bestehen.
