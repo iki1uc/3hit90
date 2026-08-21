@@ -1,138 +1,153 @@
-📘 Dokumentation · index.html
-(BUSINESS · CLOSED · NO‑CLONE · technisch präzise)
+.
+
+📘 Dokumentation · index.html (3hit90)
+CLOSED · NO‑CLONE · BUSINESS
 
 🧩 1. Zweck der Datei
-index.html ist die Hauptseite deiner Engine.
-Sie übernimmt:
+index.html ist die Start‑ und Steuerseite der 3hit90‑Engine.
+Sie verbindet alle Module zu einem einzigen, kompakten System:
 
-Initialisierung aller Module
+Initialisierung der Engine
 
-Darstellung der 81‑Matrix
+Laden der SYN‑Kerne
 
-Aktivierung der 7SENSE‑Zustände
+Aktivierung der 3HIT‑Logik
 
-Start der SYN‑Engine
+Start der RAW‑Module
 
-Laden des WRAIGHT‑Kernels
+Ausführung der Pipeline
 
-Aktivierung des RESOLVER‑Systems
+Darstellung der UI‑Elemente
 
 Tastatur‑Steuerung
 
 Auto‑Modus
 
-Live‑Log
+Live‑Status
 
-Damit ist index.html der Startpunkt, der alles zusammenführt.
+Damit ist index.html der zentrale Einstiegspunkt, der alle Komponenten synchronisiert.
 
-🧱 2. Geladene Module (über <script>)
+🧱 2. Geladene Module (über <script>‑Einbindung)
 Modul	Aufgabe
 syn.core.js	Kern der SYN‑Engine (Triangle, Sink, Source)
-syn/	Sense‑Zustände, Partikel, Energiefluss
-AIR6D_MOVE.js	6D‑Bewegungslogik
-pipeline.js	HDF‑Pipeline‑Controller
-RAW/	Rohmodule, TMP‑Daten
-r.md	Systemnotizen
+syn	Sense‑Zustände, Partikel, Energiefluss
+AIR6D_MOVE.js	6D‑Bewegungslogik für Engine‑Impulse
+pipeline.js	3hit90‑Pipeline‑Controller
+RAW	Rohmodule, TMP‑Daten, Basiswerte
+r.md	Systemnotizen, RAW‑Dokumentation
 syn1.html	Testseite für SYN‑Engine
 
 
 Alle Module werden von index.html geladen und miteinander verbunden.
 
 🧩 3. Aufbau der Seite
-3.1 Matrix‑Panel
-81 Felder (d1–w9)
+3.1 Haupt‑UI
+Die Seite erzeugt ein kompaktes Interface, bestehend aus:
 
-Jede Zelle klickbar
+Engine‑Status
 
-Jeder Klick erzeugt einen TMP‑Pfad
+SYN‑Visualisierung
 
-Wird vom RESOLVER weiterverarbeitet
+3HIT‑Impulse
 
-3.2 7SENSE‑Panel
-ghost
+RAW‑Datenanzeige
 
-help
+Pipeline‑Flow
 
-error
+Live‑Log
 
-miss
+Die UI ist minimalistisch und vollständig funktional.
 
-fit
+3.2 SYN‑Engine‑Canvas
+Die SYN‑Engine zeigt:
 
-fin
+Triangle (Kern)
 
-rdy
+Sink (Aufnahme)
 
-bioldung
-
-Jeder Zustand ist klickbar und wird vom WRAIGHT‑Kernel analysiert.
-
-3.3 SYN‑Engine‑Canvas
-Triangle
-
-Sink
-
-Source
+Source (Ausgabe)
 
 Partikel
 
 Energiefluss
 
-Visualisiert den Systemstatus live.
+Damit wird der Systemstatus grafisch dargestellt.
 
-3.4 COACH‑Panel
-Zeigt die vier Lebens‑Ordner:
+3.3 3HIT‑Logik
+Die Engine verarbeitet drei Hauptimpulse:
 
-Mobilität
+Hit‑1 → Initialisierung
 
-Wohnen
+Hit‑2 → Verarbeitung
 
-Arbeit
+Hit‑3 → Abschluss
 
-Persönlichkeit
+Diese Impulse werden über die Pipeline gesteuert.
 
-Wird dynamisch aktualisiert.
+3.4 RAW‑Panel
+Zeigt:
+
+TMP‑Daten
+
+Rohwerte
+
+Basisparameter
+
+Engine‑Kontext
+
+Das RAW‑Panel ist die Datenquelle der Engine.
 
 3.5 Live‑Log
-Zeigt jede Aktion, jeden Resolver‑Schritt, jeden Sense‑Impuls.
+Zeigt:
+
+jeden Schritt
+
+jeden Impuls
+
+jede SYN‑Analyse
+
+jede Pipeline‑Aktion
+
+Damit ist die Engine vollständig transparent.
 
 ⚙️ 4. Steuerung (Keyboard)
 Taste	Funktion
 b	Boot (Start der Engine)
-Leertaste	Step (ein Schritt im Resolver)
+Leertaste	Step (ein Pipeline‑Schritt)
 r	Reset
-1	#SLIDE
-2	#HDFRESPO
-3	#ID
+1	Hit‑1
+2	Hit‑2
+3	Hit‑3
 a	Auto‑Modus
 
 
 Damit ist die Seite vollständig interaktiv.
 
 🔁 5. Ablauf nach BOOT
-Matrix wird geladen
+SYN‑Engine wird geladen
 
-7SENSE wird aktiv
+RAW‑Module werden aktiviert
 
-SYN‑Engine startet
+Pipeline startet
 
-Kernel analysiert Sense
+3HIT‑Impulse werden bereitgestellt
 
-Resolver verarbeitet Aufträge
+Auto‑Modus übernimmt den Loop
 
-Auto‑Modus übernimmt Loop
+Live‑Log zeigt jede Aktion
 
-Live‑Log zeigt alles in Echtzeit
-
-Alles läuft in einer einzigen HTML‑Seite.
+Alles läuft in einer einzigen HTML‑Seite,
+kompiliert als index.exe.
 
 🔒 6. CLOSED · NO‑CLONE · BUSINESS
 Diese Dokumentation gilt für eine proprietäre Engine.
 
-CLOSED: Keine Weitergabe, kein Fork, kein Clone
+CLOSED
+Keine Weitergabe, kein Fork, kein Clone.
 
-NO‑CLONE: Repository darf nicht gespiegelt werden
+NO‑CLONE
+Repository darf nicht gespiegelt werden.
 
-BUSINESS: Nutzung nur mit Genehmigung von iki1uc
-
-Branding iki1uc wieimmer bleibt bestehen
+BUSINESS
+Nutzung nur mit Genehmigung von iki1uc.
+Branding iki1uc wieimmer bleibt bestehen.
