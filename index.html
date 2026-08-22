@@ -3,803 +3,542 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>⚡ COACH · HDF · 7SENSE · WRAIGHT · 3hit90 · SYN · LEBEN</title>
+<title>🔮 HOLOGRAMM-NACHWEIS · 243 · 486 · 692 · MATHEMATISCH</title>
 
 <style>
-  :root {
-    --bg: #0a0a12;
-    --fg: #0f0;
-    --gold: #ffaa00;
-    --blue: #4af;
-    --red: #f44;
-    --green: #4f4;
-    --purple: #f4f;
-    --cyan: #4ff;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Consolas', monospace;
-    padding: 12px;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    gap: 6px;
-  }
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background: #0a0a0f;
+  color: #c8d0d0;
+  font-family: 'Consolas', 'Courier New', monospace;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: radial-gradient(ellipse at 50% 50%, #0a0a1a, #000000);
+  transition: background 0.8s ease;
+}
 
-  header {
-    border-bottom: 2px solid var(--gold);
-    padding-bottom: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-  header h1 {
-    font-size: 16px;
-    background: linear-gradient(90deg, var(--gold), var(--blue), var(--purple), var(--cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+.container {
+  max-width: 1100px;
+  width: 100%;
+  background: rgba(10,10,20,0.3);
+  border: 1px solid rgba(0,204,255,0.05);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 100px rgba(0,0,0,0.8);
+}
 
-  main {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 6px;
-    min-height: 400px;
-  }
-  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+.header {
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  margin-bottom: 12px;
+}
+.header h1 {
+  font-size: 28px;
+  background: linear-gradient(90deg, #00ccff, #ff66ff, #ffaa00, #00ff88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 4px;
+}
+.header .sub {
+  color: #445555;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+.header .sub .math { color: #ff66ff; }
+.header .sub .proof { color: #00ff88; }
 
-  .panel {
-    background: #05050a;
-    border: 1px solid #1a1a2a;
-    border-radius: 6px;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-  }
-  .panel .header {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 3px;
-    border-bottom: 1px solid #1a1a2a;
-    font-size: 11px;
-  }
-  .panel .header .title { font-weight: bold; }
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+@media (max-width:700px){ .proof-grid { grid-template-columns:1fr 1fr; } }
+@media (max-width:450px){ .proof-grid { grid-template-columns:1fr; } }
 
-  /* 81-Matrix */
-  .matrix81 {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    gap: 1px;
-    margin-top: 6px;
-  }
-  .cell81 {
-    background: #0a0a12;
-    border: 1px solid #1a1a2a;
-    padding: 1px;
-    text-align: center;
-    font-size: 5px;
-    color: #6a8a8a;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .cell81:hover { border-color: var(--gold); }
-  .cell81 .id { color: var(--blue); font-weight: bold; }
-  .cell81 .tmp { color: var(--purple); }
+.proof-card {
+  background: rgba(10,10,20,0.3);
+  border: 1px solid rgba(255,255,255,0.02);
+  border-radius: 10px;
+  padding: 12px 10px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+.proof-card .icon { font-size: 28px; }
+.proof-card .name {
+  color: #aab;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 4px 0;
+}
+.proof-card .value {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: monospace;
+}
+.proof-card .desc {
+  color: #445555;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+.proof-card .status {
+  font-size: 9px;
+  margin-top: 4px;
+}
+.proof-card .status.on { color: #00ff88; }
+.proof-card .status.flow { color: #ffaa00; }
+.proof-card .status.math { color: #ff66ff; }
 
-  /* 7SENSE */
-  .sense-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 3px;
-    margin-top: 6px;
-  }
-  .sense-item {
-    background: #0a0a12;
-    border: 1px solid #1a1a2a;
-    padding: 4px 3px;
-    border-radius: 3px;
-    text-align: center;
-    font-size: 7px;
-  }
-  .sense-item .name { font-weight: bold; }
-  .sense-item.ghost { border-color: #666; color: #666; }
-  .sense-item.help { border-color: #ff4; color: #ff4; }
-  .sense-item.error { border-color: #f44; color: #f44; }
-  .sense-item.miss { border-color: #f84; color: #f84; }
-  .sense-item.fit { border-color: #4f4; color: #4f4; }
-  .sense-item.fin { border-color: #4ff; color: #4ff; }
-  .sense-item.rdy { border-color: #4af; color: #4af; }
-  .sense-item.bioldung { border-color: #f4f; color: #f4f; }
+.holo-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  aspect-ratio: 1/1;
+  background: rgba(0,0,0,0.6);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.02);
+  overflow: hidden;
+  box-shadow: inset 0 0 100px rgba(0,204,255,0.01);
+}
+#holoCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 
-  /* Canvas */
-  #canvas-wrap {
-    flex: 1;
-    background: #000;
-    border-radius: 4px;
-    overflow: hidden;
-    min-height: 150px;
-    position: relative;
-  }
-  #canvas-wrap canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
+.math-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+@media (max-width:600px){ .math-display { grid-template-columns:1fr; } }
 
-  /* Log */
-  #log {
-    flex: 1;
-    overflow-y: auto;
-    font-size: 7px;
-    color: #6a6a8a;
-    line-height: 1.3;
-    min-height: 50px;
-    max-height: 100px;
-    background: #06060a;
-    border-radius: 4px;
-    padding: 3px 5px;
-    margin-top: 6px;
-  }
-  #log .entry { padding: 1px 0; border-bottom: 1px solid #0a0a12; }
-  #log .time { color: #444; }
-  #log .msg.ok { color: var(--green); }
-  #log .msg.warn { color: var(--gold); }
-  #log .msg.err { color: var(--red); }
-  #log .msg.info { color: var(--blue); }
-  #log .msg.syn { color: var(--cyan); }
+.math-item {
+  background: rgba(10,10,20,0.2);
+  border: 1px solid rgba(255,255,255,0.02);
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+  font-family: monospace;
+  font-size: 11px;
+  color: #668888;
+}
+.math-item .formula {
+  color: #ff66ff;
+  font-size: 16px;
+  font-weight: bold;
+}
+.math-item .result {
+  color: #00ff88;
+  font-size: 14px;
+  margin-top: 4px;
+}
 
-  button {
-    background: #111;
-    color: var(--fg);
-    border: 1px solid #333;
-    padding: 3px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 8px;
-    transition: 0.2s;
-  }
-  button:hover { background: #1a1a2a; border-color: var(--fg); }
-  button.gold { border-color: var(--gold); color: var(--gold); }
-  button.gold:hover { background: var(--gold); color: #000; }
-  button.green { border-color: var(--green); color: var(--green); }
-  button.green:hover { background: var(--green); color: #000; }
-  button.blue { border-color: var(--blue); color: var(--blue); }
-  button.blue:hover { background: var(--blue); color: #000; }
-  button.red { border-color: var(--red); color: var(--red); }
-  button.red:hover { background: var(--red); color: #000; }
+.controls {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+.controls button {
+  background: rgba(20,35,35,0.2);
+  color: #668888;
+  border: 1px solid rgba(255,255,255,0.02);
+  padding: 4px 14px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 9px;
+  transition: all 0.3s;
+}
+.controls button:hover { background: rgba(40,80,70,0.08); color: #aaeedd; }
+.controls button.active { background: rgba(40,80,70,0.06); color: #00ff88; }
+.controls button.math { color: #ff66ff; border-color: rgba(255,102,255,0.05); }
+.controls button.proof { color: #00ff88; border-color: rgba(0,255,136,0.05); }
 
-  .controls {
-    display: flex;
-    gap: 3px;
-    flex-wrap: wrap;
-    padding: 3px 0;
-  }
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 12px;
+  margin-top: 8px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  font-size: 8px;
+  color: #445555;
+  border: 1px solid rgba(255,255,255,0.01);
+}
+.status-bar .math { color: #ff66ff; }
+.status-bar .proof { color: #00ff88; }
 
-  #output {
-    background: #0a0a12;
-    border: 1px solid #1a1a2a;
-    border-radius: 4px;
-    padding: 6px;
-    margin-top: 6px;
-    font-size: 8px;
-    color: #8af;
-    white-space: pre-wrap;
-    min-height: 40px;
-  }
-
-  .coach-box {
-    background: #0a0a12;
-    border: 1px solid #1a1a2a;
-    border-radius: 4px;
-    padding: 6px;
-    margin-top: 6px;
-    font-size: 8px;
-    color: #8af;
-  }
-  .coach-box .label { color: var(--gold); font-weight: bold; }
-
-  #status-led {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #333;
-    transition: 0.3s;
-  }
-  #status-led.on { background: #0f0; box-shadow: 0 0 20px #0f0; }
-  #status-led.off { background: #f00; }
-  #status-led.busy { background: #ff0; animation: blink 0.5s infinite; }
-  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
+.footer {
+  text-align: center;
+  margin-top: 10px;
+  color: #222;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+.footer span { color: #ff66ff; }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>⚡ COACH · HDF · 7SENSE · WRAIGHT · 3hit90 · SYN · LEBEN</h1>
-  <div style="display:flex;align-items:center;gap:8px;">
-    <span id="status-led" class="off"></span>
-    <span id="clock" style="font-size:10px;color:#666;">⏱️ --:--:--</span>
-    <span id="cycle-count" style="font-size:9px;color:#444;">Zyklus 0</span>
+<div class="container" id="container">
+
+<div class="header">
+  <h1>🔮 HOLOGRAMM-NACHWEIS</h1>
+  <div class="sub"><span class="math">243 · 486 · 692</span> · <span class="proof">MATHEMATISCH</span></div>
+</div>
+
+<div class="proof-grid">
+  <div class="proof-card">
+    <div class="icon">🔢</div>
+    <div class="name">243 · Basis</div>
+    <div class="value" style="color:#00ccff;" id="baseValue">0</div>
+    <div class="desc">Minimale Auflösung</div>
+    <div class="status math" id="baseStatus">● bereit</div>
   </div>
-</header>
-
-<main>
-  <!-- LINKS: 81-Matrix + Canvas -->
-  <div class="panel">
-    <div class="header">
-      <span class="title" style="color:var(--gold);">📊 81-MATRIX · d1–w9</span>
-      <span id="stats">P:0 S:0</span>
-    </div>
-    <div class="matrix81" id="matrix81"></div>
-
-    <div style="margin-top:6px;">
-      <div style="font-size:8px;color:#666;">🧠 7SENSE · Zustände</div>
-      <div class="sense-grid" id="senseGrid"></div>
-    </div>
-
-    <div id="canvas-wrap">
-      <canvas id="simCanvas"></canvas>
-    </div>
-
-    <div class="controls">
-      <button class="gold" id="btnBoot">▶ BOOT</button>
-      <button class="green" id="btnStep">⏭ STEP</button>
-      <button class="blue" id="btnSyn">🔄 SYN</button>
-      <button class="red" id="btnReset">⟲ RESET</button>
-      <label style="font-size:8px;color:#666;">Speed:
-        <select id="speedSelect" style="font-size:8px;">
-          <option value="0.5">0.5x</option>
-          <option value="1" selected>1x</option>
-          <option value="2">2x</option>
-          <option value="4">4x</option>
-        </select>
-      </label>
-    </div>
-
-    <div id="log">
-      <div class="entry"><span class="time">[INIT]</span> <span class="msg info">⚡ COACH · HDF · 7SENSE · WRAIGHT · 3hit90</span></div>
-      <div class="entry"><span class="time">[INIT]</span> <span class="msg info">📦 Module: HDF, 7SENSE, WRAIGHT, COACH, SYN</span></div>
-      <div class="entry"><span class="time">[INIT]</span> <span class="msg warn">🔺 Warte auf BOOT...</span></div>
-    </div>
+  <div class="proof-card">
+    <div class="icon">🔄</div>
+    <div class="name">486 · Spiegel</div>
+    <div class="value" style="color:#ff66ff;" id="mirrorValue">0</div>
+    <div class="desc">Doppelte Auflösung</div>
+    <div class="status flow" id="mirrorStatus">● bereit</div>
   </div>
-
-  <!-- RECHTS: WRAIGHT + COACH + OUTPUT -->
-  <div class="panel">
-    <div class="header">
-      <span class="title" style="color:var(--purple);">🧠 WRAIGHT · COACH · RESOLVER</span>
-      <span id="wraight-status">● bereit</span>
-    </div>
-
-    <div id="output">⚙️ WRAIGHT-Kernel bereit · warte auf Analyse</div>
-
-    <div class="coach-box">
-      <span class="label">📋 COACH · Lebens-Ordner</span><br>
-      🚗 Mobilität & Bewegung · 🏠 Wohnen & Zuhause<br>
-      💼 Arbeit & Zukunft · 🧘 Persönlichkeit & Alltag<br>
-      <span style="color:#666;font-size:7px;">AGP · HELP · Jobcenter/Arbeitsamt</span>
-    </div>
-
-    <div style="margin-top:6px;">
-      <div style="font-size:8px;color:#666;">⌨️ COMMANDS.room</div>
-      <div id="cmdGrid" style="display:grid;grid-template-columns:repeat(9,1fr);gap:2px;margin-top:4px;"></div>
-    </div>
-
-    <div class="controls">
-      <button class="gold" id="btnResolve">⚙️ RESOLVE</button>
-      <button class="green" id="btnSlide">📐 SLIDE</button>
-      <button class="blue" id="btnHdfRespo">📊 HDFRESPO</button>
-      <button class="purple" id="btnID">🆔 ID</button>
-      <button id="btnAuto">▶ AUTO</button>
-    </div>
+  <div class="proof-card">
+    <div class="icon">🌌</div>
+    <div class="name">692 · Voll</div>
+    <div class="value" style="color:#ffaa00;" id="fullValue">0</div>
+    <div class="desc">Komplettes System</div>
+    <div class="status on" id="fullStatus">● bereit</div>
   </div>
-</main>
+</div>
+
+<div class="holo-wrap">
+  <canvas id="holoCanvas"></canvas>
+</div>
+
+<div class="math-display">
+  <div class="math-item">
+    <div class="formula">243 = 3⁵</div>
+    <div class="result" id="math243">3 × 81</div>
+  </div>
+  <div class="math-item">
+    <div class="formula">486 = 2 × 243</div>
+    <div class="result" id="math486">Doppelte Struktur</div>
+  </div>
+  <div class="math-item">
+    <div class="formula">692 = 243 + 449</div>
+    <div class="result" id="math692">Vollständiges System</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="active proof" id="btnStart">▶ START</button>
+  <button class="math" id="btn243">🔢 243</button>
+  <button class="math" id="btn486">🔄 486</button>
+  <button class="math" id="btn692">🌌 692</button>
+  <button class="proof" id="btnProof">🔮 PROOF</button>
+  <button id="btnReset">⟲ RESET</button>
+</div>
+
+<div class="status-bar">
+  <span class="math">🔢 MODUS: <span id="modeStatus">243</span></span>
+  <span class="proof">🔮 HOLOGRAMM: <span id="holoStatus">bereit</span></span>
+  <span>⏱️ <span id="timeStatus">00:00</span></span>
+</div>
+
+<div class="footer">
+  <span>🔮</span> HOLOGRAMM-NACHWEIS · 243 · 486 · 692 · <span>wieimmer4u</span>
+</div>
+
+</div>
 
 <script>
 // ============================================================
-// ALL-IN-ONE · HDF · 7SENSE · WRAIGHT · COACH · 3hit90 · SYN
+// HOLOGRAMM-NACHWEIS · 243 · 486 · 692 · MATHEMATISCH
 // ============================================================
 
-// ─── 1. COMMANDS.room ──────────────────────────────────────
-const COMMANDS = {
-  d: { cmd: 'd', tmp: 'TMP.1', desc: 'Erste Basis' },
-  e: { cmd: 'e', tmp: 'TMP.2', desc: 'Zweite Basis' },
-  i: { cmd: 'i', tmp: 'TMP.3', desc: 'Dritte Basis' },
-  n: { cmd: 'n', tmp: 'TMP.4', desc: 'Vierte Basis' },
-  o: { cmd: 'o', tmp: 'TMP.5', desc: 'Fünfte Basis' },
-  r: { cmd: 'r', tmp: 'TMP.6', desc: 'Sechste Basis' },
-  s: { cmd: 's', tmp: 'TMP.7', desc: 'Siebte Basis' },
-  u: { cmd: 'u', tmp: 'TMP.8', desc: 'Achte Basis' },
-  w: { cmd: 'w', tmp: 'TMP.9', desc: 'Neunte Basis' }
-};
-const CMD_KEYS = ['d','e','i','n','o','r','s','u','w'];
-
-// ─── 2. 7SENSE ──────────────────────────────────────────────
-const SEVEN_SENSE = [
-  { name: 'ghost', desc: 'versteckt', color: 'ghost' },
-  { name: 'help', desc: 'korrigierend', color: 'help' },
-  { name: 'error', desc: 'fehlerhaft', color: 'error' },
-  { name: 'miss', desc: 'unvollständig', color: 'miss' },
-  { name: 'fit', desc: 'geordnet', color: 'fit' },
-  { name: 'fin', desc: 'abgeschlossen', color: 'fin' },
-  { name: 'rdy', desc: 'bereit', color: 'rdy' },
-  { name: 'bioldung', desc: 'aufbauend', color: 'bioldung' }
-];
-
-// ─── 3. ONE.ROOM ────────────────────────────────────────────
-const ONE_ROOM = [
-  { id: '#SLIDE', target: 'SLIDE.hdf', dir: '/SLIDE/HDF/' },
-  { id: '#HDFRESPO', target: 'HDFRESPO.hdf', dir: '/HDF/respo/' },
-  { id: '#ID', target: 'ID.hdf', dir: '/SLIDE/ID/' }
-];
-
-// ─── 4. STATE ────────────────────────────────────────────────
-const state = {
-  matrix: [],
-  particles: [],
-  sinks: [],
-  sources: [],
-  stars: [],
-  events: [],
-  simTime: 0,
-  cycle: 0,
-  running: false,
-  triangle: null,
-  hdfCount: 0,
-  autoMode: false,
-  lastTime: 0,
-  sense: 'rdy',
-  wraight: { allowed: false, cause: '' }
-};
-
-// ─── 5. DOM ──────────────────────────────────────────────────
-const matrixEl = document.getElementById('matrix81');
-const senseGridEl = document.getElementById('senseGrid');
-const cmdGridEl = document.getElementById('cmdGrid');
-const logDiv = document.getElementById('log');
-const outputEl = document.getElementById('output');
-const canvas = document.getElementById('simCanvas');
+// ===== CANVAS =====
+const canvas = document.getElementById('holoCanvas');
 const ctx = canvas.getContext('2d');
-const statusLed = document.getElementById('status-led');
-const clockEl = document.getElementById('clock');
-const cycleCountEl = document.getElementById('cycle-count');
-const statsEl = document.getElementById('stats');
+let running = true;
+let time = 0;
+let mode = 243;
+let progress = 0;
+let maxProgress = 243;
 
-// ─── 6. LOG ──────────────────────────────────────────────────
-function log(msg, type = 'info') {
-  const entry = document.createElement('div');
-  entry.className = 'entry';
-  const time = new Date().toLocaleTimeString();
-  const cls = type === 'ok' ? 'ok' : type === 'err' ? 'err' : type === 'warn' ? 'warn' : type === 'syn' ? 'syn' : 'info';
-  entry.innerHTML = `<span class="time">[${time}]</span> <span class="msg ${cls}">${msg}</span>`;
-  logDiv.appendChild(entry);
-  logDiv.scrollTop = logDiv.scrollHeight;
-  while (logDiv.children.length > 60) logDiv.removeChild(logDiv.firstChild);
-}
-
-// ─── 7. 81-MATRIX ────────────────────────────────────────────
-function build81Matrix() {
-  const matrix = [];
-  for (let r = 0; r < 9; r++) {
-    const row = [];
-    for (let c = 0; c < 9; c++) {
-      const cmd = CMD_KEYS[r];
-      const num = c + 1;
-      row.push({ id: `${cmd}${num}`, cmd, num, tmp: `TMP.${r+1}.${num}`, status: 'aktiv' });
-    }
-    matrix.push(row);
-  }
-  return matrix;
-}
-
-function render81Matrix() {
-  matrixEl.innerHTML = '';
-  state.matrix.forEach(row => {
-    row.forEach(cell => {
-      const div = document.createElement('div');
-      div.className = 'cell81';
-      div.innerHTML = `<span class="id">${cell.id}</span><br><span class="tmp">→</span>`;
-      div.title = `${cell.id} → ${cell.tmp}`;
-      div.addEventListener('click', () => {
-        outputEl.textContent = `📊 ${cell.id} → ${cell.tmp} · Status: ${cell.status}`;
-        log(`📊 ${cell.id} → ${cell.tmp}`, 'info');
-      });
-      matrixEl.appendChild(div);
-    });
-  });
-}
-
-// ─── 8. 7SENSE ──────────────────────────────────────────────
-function renderSense() {
-  senseGridEl.innerHTML = '';
-  SEVEN_SENSE.forEach(s => {
-    const div = document.createElement('div');
-    div.className = `sense-item ${s.color}`;
-    div.innerHTML = `<span class="name">${s.name}</span><br><span style="font-size:6px;color:#666;">${s.desc}</span>`;
-    div.addEventListener('click', () => {
-      state.sense = s.name;
-      outputEl.textContent = `🧠 7SENSE: ${s.name} — ${s.desc}`;
-      log(`🧠 7SENSE → ${s.name}`, 'warn');
-    });
-    senseGridEl.appendChild(div);
-  });
-}
-
-// ─── 9. COMMANDS ─────────────────────────────────────────────
-function renderCommands() {
-  cmdGridEl.innerHTML = '';
-  CMD_KEYS.forEach(key => {
-    const cmd = COMMANDS[key];
-    const div = document.createElement('div');
-    div.style.cssText = 'background:#0a0a12;border:1px solid #1a1a2a;border-radius:3px;padding:2px;text-align:center;font-size:7px;cursor:pointer;';
-    div.innerHTML = `<span style="color:var(--gold);font-weight:bold;">${cmd.cmd}</span> <span style="color:var(--purple);">→</span>`;
-    div.title = `${cmd.cmd} → ${cmd.tmp} · ${cmd.desc}`;
-    div.addEventListener('click', () => {
-      outputEl.textContent = `⌨️ ${cmd.cmd} → ${cmd.tmp} · ${cmd.desc}`;
-      log(`⌨️ ${cmd.cmd} → ${cmd.tmp}`, 'info');
-    });
-    cmdGridEl.appendChild(div);
-  });
-}
-
-// ─── 10. CANVAS SETUP ──────────────────────────────────────
 function resizeCanvas() {
-  const wrap = canvas.parentElement;
-  canvas.width = wrap.clientWidth || 500;
-  canvas.height = wrap.clientHeight || 200;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  const size = Math.min(rect.width, rect.height, 560);
+  canvas.width = size;
+  canvas.height = size;
 }
-resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-// ─── 11. TRIANGLE + SYN-ENGINE ─────────────────────────────
-function makeTriangle(p1, p2, p3) {
-  return { p1, p2, p3,
-    center: { x: (p1.x + p2.x + p3.x) / 3, y: (p1.y + p2.y + p3.y) / 3 },
-    sideA: { a: p1, b: p2 }, sideB: { a: p2, b: p3 }
+// ===== MATHEMATISCHE FUNKTIONEN =====
+function getModeValues() {
+  const modes = {
+    243: { max: 243, label: '243', color: '#00ccff', factor: 1 },
+    486: { max: 486, label: '486', color: '#ff66ff', factor: 2 },
+    692: { max: 692, label: '692', color: '#ffaa00', factor: 2.847 }
   };
+  return modes[mode] || modes[243];
 }
 
-function makeSink(sideA, opts = { radius: 30, strength: 150 }) {
-  return {
-    id: 'A-' + Date.now(),
-    pos: { x: (sideA.a.x + sideA.b.x) / 2, y: (sideA.a.y + sideA.b.y) / 2 },
-    radius: opts.radius, strength: opts.strength, energy: 0
-  };
+// ===== UPDATE =====
+function updateMath() {
+  const m = getModeValues();
+  const pct = Math.min(100, (progress / m.max) * 100);
+
+  document.getElementById('baseValue').textContent = Math.round(progress);
+  document.getElementById('baseValue').style.color = m.color;
+  document.getElementById('baseStatus').textContent = pct >= 100 ? '● voll' : `● ${Math.round(pct)}%`;
+  document.getElementById('baseStatus').className = pct >= 100 ? 'status on' : 'status math';
+
+  document.getElementById('mirrorValue').textContent = Math.round(progress * 2);
+  document.getElementById('mirrorValue').style.color = m.color;
+  document.getElementById('mirrorStatus').textContent = pct >= 100 ? '● voll' : `● ${Math.round(pct)}%`;
+  document.getElementById('mirrorStatus').className = pct >= 100 ? 'status on' : 'status flow';
+
+  document.getElementById('fullValue').textContent = Math.round(progress * 2.847);
+  document.getElementById('fullValue').style.color = m.color;
+  document.getElementById('fullStatus').textContent = pct >= 100 ? '● voll' : `● ${Math.round(pct)}%`;
+  document.getElementById('fullStatus').className = pct >= 100 ? 'status on' : 'status flow';
+
+  document.getElementById('modeStatus').textContent = m.label;
+  document.getElementById('holoStatus').textContent = pct >= 100 ? '✅ BEWEIS' : `⟳ ${Math.round(pct)}%`;
+
+  document.getElementById('math243').textContent = `3 × 81 = ${Math.round(progress)}`;
+  document.getElementById('math486').textContent = `2 × ${Math.round(progress)} = ${Math.round(progress * 2)}`;
+  document.getElementById('math692').textContent = `${Math.round(progress)} + 449 = ${Math.round(progress + 449)}`;
+
+  if (pct >= 100) {
+    document.getElementById('holoStatus').textContent = '✅ BEWEIS GELUNGEN';
+    document.getElementById('holoStatus').style.color = '#00ff88';
+  }
 }
 
-function makeSource(sideB, opts = { radius: 6, emissionRate: 1.0, energy: 80 }) {
-  return {
-    id: 'B-' + Date.now(),
-    pos: { x: (sideB.a.x + sideB.b.x) / 2 + (Math.random() - 0.5) * 20,
-           y: (sideB.a.y + sideB.b.y) / 2 + (Math.random() - 0.5) * 20 },
-    radius: opts.radius, emissionRate: opts.emissionRate, energy: opts.energy
-  };
-}
-
-function spawnParticle(source) {
-  const angle = Math.random() * Math.PI * 2;
-  const speed = 0.5 + Math.random() * 1.2;
-  return {
-    pos: { x: source.pos.x, y: source.pos.y },
-    vel: { x: Math.cos(angle) * speed, y: Math.sin(angle) * speed },
-    mass: 1, life: 10 + Math.random() * 20, origin: source.id, trail: []
-  };
-}
-
-function initTriangle() {
+// ===== HOLOGRAMM RENDER =====
+function renderHologram(timestamp) {
+  if (!running) return;
+  time = timestamp || Date.now();
   const w = canvas.width, h = canvas.height;
-  const tri = makeTriangle(
-    { x: w * 0.15, y: h * 0.85 },
-    { x: w * 0.85, y: h * 0.85 },
-    { x: w * 0.5, y: h * 0.1 }
-  );
-  state.triangle = tri;
-  state.sinks = [makeSink(tri.sideA, { strength: 150 })];
-  state.sources = [makeSource(tri.sideB)];
-  state.particles = [];
-  state.stars = [];
-  state.events = [];
-  state.simTime = 0;
-  log('🔺 Triangle initialisiert', 'syn');
-}
+  const cx = w/2, cy = h/2;
+  const maxDim = Math.min(w, h);
+  const m = getModeValues();
+  const pct = Math.min(1, progress / m.max);
 
-// ─── 12. SIMULATION STEP ────────────────────────────────────
-function simStep(dt) {
-  const speed = parseFloat(document.getElementById('speedSelect').value) || 1;
-  dt = dt * speed;
-
-  // Emission
-  for (const src of state.sources) {
-    if (Math.random() < src.emissionRate * dt * 0.4) {
-      state.particles.push(spawnParticle(src));
-      src.energy -= 0.1;
-    }
-  }
-
-  // Update particles
-  const newParticles = [];
-  for (const p of state.particles) {
-    let fx = 0, fy = 0;
-    for (const s of state.sinks) {
-      const dx = s.pos.x - p.pos.x, dy = s.pos.y - p.pos.y;
-      const r2 = dx*dx + dy*dy + 0.01;
-      const r = Math.sqrt(r2);
-      const F = s.strength / r2;
-      fx += F * (dx / r); fy += F * (dy / r);
-    }
-    const damping = 0.04;
-    p.vel.x += fx * dt * 2; p.vel.y += fy * dt * 2;
-    p.vel.x *= (1 - damping); p.vel.y *= (1 - damping);
-    p.pos.x += p.vel.x * dt * 60; p.pos.y += p.vel.y * dt * 60;
-    p.life -= dt;
-
-    p.trail.push({ x: p.pos.x, y: p.pos.y });
-    if (p.trail.length > 8) p.trail.shift();
-
-    let absorbed = false;
-    for (const s of state.sinks) {
-      const dx = s.pos.x - p.pos.x, dy = s.pos.y - p.pos.y;
-      const r = Math.sqrt(dx*dx + dy*dy);
-      if (r < Math.max(4, s.radius * 0.1)) {
-        s.energy += p.mass;
-        state.events.push({ type: 'absorbed', sinkId: s.id });
-        absorbed = true; break;
-      }
-    }
-    if (p.life > 0 && !absorbed) newParticles.push(p);
-  }
-  state.particles = newParticles;
-
-  // Sink spawn stars
-  for (const s of state.sinks) {
-    if (s.energy > 20) {
-      s.energy -= 20;
-      state.stars.push({
-        id: 'star-' + Date.now(),
-        pos: { x: s.pos.x + (Math.random() - 0.5) * 80, y: s.pos.y + (Math.random() - 0.5) * 80 },
-        energy: 10, life: 35
-      });
-      log('⭐ Star gespawnt', 'syn');
-    }
-  }
-  state.stars = state.stars.filter(s => { s.life -= dt; return s.life > 0; });
-  state.simTime += dt;
-}
-
-// ─── 13. RENDER ──────────────────────────────────────────────
-function render() {
-  const w = canvas.width, h = canvas.height;
   ctx.clearRect(0, 0, w, h);
 
   // Hintergrund
-  const grad = ctx.createRadialGradient(w/2, h/2, 10, w/2, h/2, w/2);
-  grad.addColorStop(0, '#0a0a1a'); grad.addColorStop(1, '#000');
-  ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
+  const grad = ctx.createRadialGradient(cx, cy, 10, cx, cy, maxDim * 0.6);
+  grad.addColorStop(0, '#0a0a1a');
+  grad.addColorStop(0.5, '#050510');
+  grad.addColorStop(1, '#000000');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, w, h);
 
-  // Grid
-  ctx.strokeStyle = '#0a0a1a'; ctx.lineWidth = 0.5;
-  for (let x = 0; x < w; x += 40) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
-  for (let y = 0; y < h; y += 40) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
-
-  // Triangle
-  if (state.triangle) {
-    const t = state.triangle;
+  // Mathematische Ringe
+  for (let ring = 0; ring < 5; ring++) {
+    const r = maxDim * (0.08 + ring * 0.06 + pct * 0.04);
+    const alpha = 0.02 + (ring / 5) * 0.04 + pct * 0.02;
+    ctx.strokeStyle = m.color + Math.floor(alpha * 255).toString(16).padStart(2, '0');
+    ctx.lineWidth = 0.5 + pct * 0.5;
     ctx.beginPath();
-    ctx.moveTo(t.p1.x, t.p1.y); ctx.lineTo(t.p2.x, t.p2.y);
-    ctx.lineTo(t.p3.x, t.p3.y); ctx.closePath();
-    ctx.strokeStyle = 'rgba(0,255,0,0.1)'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
   }
 
-  // Stars
-  for (const s of state.stars) {
-    const r = 3 + s.energy * 0.2;
-    const grad2 = ctx.createRadialGradient(s.pos.x, s.pos.y, 0, s.pos.x, s.pos.y, r);
-    grad2.addColorStop(0, '#ff6'); grad2.addColorStop(1, 'rgba(255,255,0,0)');
-    ctx.fillStyle = grad2; ctx.beginPath(); ctx.arc(s.pos.x, s.pos.y, r, 0, Math.PI*2); ctx.fill();
+  // 243 · 486 · 692 als Punkte
+  const totalPoints = Math.min(692, Math.floor(pct * 692));
+  const basePoints = Math.min(243, Math.floor(pct * 243));
+  const mirrorPoints = Math.min(486, Math.floor(pct * 486));
+
+  // Basis (243)
+  for (let i = 0; i < basePoints; i++) {
+    const angle = (i / 243) * Math.PI * 2 + time / 5000;
+    const r = maxDim * (0.2 + 0.1 * Math.sin(i * 0.1));
+    const x = cx + Math.cos(angle + i * 0.01) * r;
+    const y = cy + Math.sin(angle + i * 0.01) * r;
+    ctx.shadowColor = '#00ccff33';
+    ctx.shadowBlur = 8;
+    ctx.fillStyle = '#00ccff66';
+    ctx.beginPath();
+    ctx.arc(x, y, 1.5 + pct * 1.5, 0, Math.PI * 2);
+    ctx.fill();
   }
 
-  // Particles
-  for (const p of state.particles) {
-    for (let i = 0; i < p.trail.length - 1; i++) {
-      const alpha = i / p.trail.length * 0.3;
-      ctx.strokeStyle = `rgba(0,255,255,${alpha})`; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(p.trail[i].x, p.trail[i].y);
-      ctx.lineTo(p.trail[i+1].x, p.trail[i+1].y); ctx.stroke();
-    }
-    const size = 2 + p.life * 0.04;
-    const grad3 = ctx.createRadialGradient(p.pos.x, p.pos.y, 0, p.pos.x, p.pos.y, size);
-    grad3.addColorStop(0, '#4ff'); grad3.addColorStop(1, 'rgba(0,255,255,0)');
-    ctx.fillStyle = grad3; ctx.beginPath(); ctx.arc(p.pos.x, p.pos.y, size, 0, Math.PI*2); ctx.fill();
+  // Spiegel (486)
+  for (let i = 0; i < mirrorPoints; i++) {
+    const angle = (i / 486) * Math.PI * 2 + time / 4000 + Math.PI;
+    const r = maxDim * (0.25 + 0.08 * Math.cos(i * 0.08));
+    const x = cx + Math.cos(angle + i * 0.008) * r;
+    const y = cy + Math.sin(angle + i * 0.008) * r;
+    ctx.shadowColor = '#ff66ff33';
+    ctx.shadowBlur = 8;
+    ctx.fillStyle = '#ff66ff66';
+    ctx.beginPath();
+    ctx.arc(x, y, 1.5 + pct * 1.5, 0, Math.PI * 2);
+    ctx.fill();
   }
 
-  // Sinks (A)
-  for (const s of state.sinks) {
-    const r = s.radius * 0.2 + s.energy * 0.12;
-    const grad4 = ctx.createRadialGradient(s.pos.x, s.pos.y, 0, s.pos.x, s.pos.y, r + 8);
-    grad4.addColorStop(0, '#f44'); grad4.addColorStop(0.3, '#a22');
-    grad4.addColorStop(1, 'rgba(255,0,0,0)');
-    ctx.fillStyle = grad4; ctx.beginPath(); ctx.arc(s.pos.x, s.pos.y, r + 8, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = '#f44'; ctx.font = '7px Consolas'; ctx.textAlign = 'center';
-    ctx.fillText(`A ${s.energy.toFixed(1)}`, s.pos.x, s.pos.y + 3);
+  // Voll (692)
+  for (let i = 0; i < totalPoints; i++) {
+    const angle = (i / 692) * Math.PI * 2 + time / 3000;
+    const r = maxDim * (0.15 + 0.15 * Math.sin(i * 0.05));
+    const x = cx + Math.cos(angle + i * 0.005) * r;
+    const y = cy + Math.sin(angle + i * 0.005) * r;
+    ctx.shadowColor = '#ffaa0033';
+    ctx.shadowBlur = 8;
+    ctx.fillStyle = '#ffaa0066';
+    ctx.beginPath();
+    ctx.arc(x, y, 1 + pct * 2, 0, Math.PI * 2);
+    ctx.fill();
   }
 
-  // Sources (B)
-  for (const s of state.sources) {
-    const grad5 = ctx.createRadialGradient(s.pos.x, s.pos.y, 0, s.pos.x, s.pos.y, 12);
-    grad5.addColorStop(0, '#4f4'); grad5.addColorStop(1, 'rgba(0,255,0,0)');
-    ctx.fillStyle = grad5; ctx.beginPath(); ctx.arc(s.pos.x, s.pos.y, 12, 0, Math.PI*2); ctx.fill();
-    ctx.fillStyle = '#4f4'; ctx.font = '7px Consolas'; ctx.textAlign = 'center';
-    ctx.fillText(`B ${s.energy.toFixed(1)}`, s.pos.x, s.pos.y + 3);
-  }
+  // Zentrum
+  const coreSize = maxDim * (0.02 + pct * 0.03);
+  ctx.shadowColor = m.color + '55';
+  ctx.shadowBlur = 50;
+  ctx.fillStyle = m.color + '44';
+  ctx.beginPath();
+  ctx.arc(cx, cy, coreSize, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.shadowBlur = 0;
 
-  statsEl.textContent = `P:${state.particles.length} S:${state.stars.length}`;
+  // Text
+  const statusText = pct >= 1 ? '✅ BEWEIS' : `${Math.round(pct * 100)}% · ${m.label}`;
+  ctx.fillStyle = pct >= 1 ? '#00ff88' : m.color;
+  ctx.font = `${maxDim * 0.03}px monospace`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText(`🔮 ${statusText}`, cx, h - 20);
+
+  // Math Formel
+  ctx.fillStyle = '#445555';
+  ctx.font = `${maxDim * 0.015}px monospace`;
+  ctx.textBaseline = 'top';
+  ctx.fillText(`${m.label} = ${Math.round(progress)} / ${m.max}`, cx, 20);
+
+  requestAnimationFrame(renderHologram);
 }
 
-// ─── 14. WRAIGHT-KERNEL ────────────────────────────────────
-function wraightAnalyze(input) {
-  const sense = state.sense || 'rdy';
-  const pulse = state.simTime || 0;
-  const drift = Math.sin(pulse * 0.5) * 20;
-
-  let cause = '';
-  let allowed = false;
-
-  switch(sense) {
-    case 'ghost': cause = 'versteckte Absicht'; allowed = false; break;
-    case 'help': cause = 'korrigierende Absicht'; allowed = true; break;
-    case 'error': cause = 'fehlerhafte Absicht'; allowed = false; break;
-    case 'miss': cause = 'unvollständige Absicht'; allowed = false; break;
-    case 'fit': cause = 'geordnete Absicht'; allowed = true; break;
-    case 'fin': cause = 'abgeschlossene Absicht'; allowed = true; break;
-    case 'rdy': cause = 'bereite Absicht'; allowed = true; break;
-    case 'bioldung': cause = 'aufbauende Absicht'; allowed = true; break;
-    default: cause = 'unbekannt'; allowed = false;
-  }
-
-  state.wraight = { allowed, cause, sense, pulse, drift };
-  return state.wraight;
+// ===== MODUS WECHSELN =====
+function setMode(newMode) {
+  mode = newMode;
+  progress = 0;
+  document.getElementById('modeStatus').textContent = newMode;
+  document.getElementById('holoStatus').textContent = '⟳ start';
+  updateMath();
+  console.log(`🔢 Modus: ${newMode}`);
 }
 
-// ─── 15. RESOLVER ──────────────────────────────────────────
-function resolve(target) {
-  state.hdfCount++;
-  const found = ONE_ROOM.find(item => item.id === target);
-  if (found) {
-    outputEl.textContent = `⚙️ RESOLVER · ${target} → ${found.target} (${found.dir}) ✅`;
-    log(`⚙️ ${target} → ${found.target}`, 'ok');
-    return { success: true, target, found };
+// ===== SCHRITT =====
+function doStep() {
+  const m = getModeValues();
+  if (progress < m.max) {
+    progress += Math.min(10, m.max - progress);
+    updateMath();
   } else {
-    outputEl.textContent = `❌ RESOLVER · ${target} nicht gefunden`;
-    log(`❌ ${target} nicht gefunden`, 'err');
-    return { success: false, target };
+    document.getElementById('holoStatus').textContent = '✅ BEWEIS GELUNGEN';
   }
 }
 
-// ─── 16. BOOT / STEP / RESET ──────────────────────────────
-function bootAll() {
-  log('🚀 BOOT ALL...', 'warn');
-  statusLed.className = 'busy';
-  state.matrix = build81Matrix();
-  render81Matrix();
-  renderSense();
-  renderCommands();
-  initTriangle();
+// ===== PROOF =====
+function showProof() {
+  const m = getModeValues();
+  const pct = Math.min(100, (progress / m.max) * 100);
+  const proofText = pct >= 100 ?
+    '✅ BEWEIS GELUNGEN' :
+    `⏳ ${Math.round(pct)}% · ${Math.round(progress)}/${m.max}`;
 
+  const proof = document.createElement('div');
+  proof.style.cssText = `
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999; backdrop-filter: blur(20px);
+    font-family: 'Consolas', monospace;
+  `;
+  proof.innerHTML = `
+    <div style="text-align:center; padding:40px; border:1px solid rgba(255,102,255,0.1); border-radius:20px; background:rgba(10,10,20,0.6); max-width:450px;">
+      <div style="font-size:48px; color:#ff66ff;">🔮</div>
+      <div style="color:#ff66ff; font-size:20px; margin:12px 0; letter-spacing:4px;">HOLOGRAMM-NACHWEIS</div>
+      <div style="color:#88ddbb; font-size:13px; line-height:1.8;">
+        🔢 MODUS: ${m.label}<br>
+        📊 FORTSCHRITT: ${proofText}<br>
+        🌀 243 = 3⁵ · ${Math.round(progress)}<br>
+        🔄 486 = 2 × 243 · ${Math.round(progress * 2)}<br>
+        🌌 692 = 243 + 449 · ${Math.round(progress + 449)}
+      </div>
+      <div style="color:#445555; font-size:10px; margin-top:12px; border-top:1px solid rgba(255,255,255,0.02); padding-top:12px;">
+        MATHEMATISCHER BEWEIS · SICHTBAR
+      </div>
+      <button onclick="this.parentElement.parentElement.remove()" style="
+        margin-top:14px; background:rgba(20,35,35,0.2); color:#668888;
+        border:1px solid rgba(255,255,255,0.02); padding:6px 20px;
+        border-radius:18px; cursor:pointer; font-family:inherit; font-size:9px;
+      ">⏎ SCHLIESSEN</button>
+    </div>
+  `;
+  document.body.appendChild(proof);
+}
+
+// ===== CONTROLS =====
+document.getElementById('btnStart').addEventListener('click', () => {
+  running = true;
+  document.getElementById('btnStart').classList.add('active');
+  document.getElementById('holoStatus').textContent = '⟳ läuft';
+  renderHologram(Date.now());
+});
+
+document.getElementById('btn243').addEventListener('click', () => setMode(243));
+document.getElementById('btn486').addEventListener('click', () => setMode(486));
+document.getElementById('btn692').addEventListener('click', () => setMode(692));
+
+document.getElementById('btnProof').addEventListener('click', showProof);
+
+document.getElementById('btnReset').addEventListener('click', () => {
+  running = false;
+  progress = 0;
+  document.getElementById('btnStart').classList.remove('active');
+  document.getElementById('holoStatus').textContent = 'bereit';
+  updateMath();
   setTimeout(() => {
-    statusLed.className = 'on';
-    state.running = true;
-    state.lastTime = performance.now();
-    log('✅ SYSTEM BEREIT — Simulation läuft', 'ok');
-    wraightAnalyze('boot');
-    outputEl.textContent = `🧠 WRAIGHT · Sense: ${state.wraight.sense} · Cause: ${state.wraight.cause} · Allowed: ${state.wraight.allowed}`;
-    loopFrame(performance.now());
-  }, 500);
-}
-
-function stepSim() {
-  log('⏭ STEP', 'warn');
-  simStep(0.5);
-  render();
-  state.cycle++;
-  cycleCountEl.textContent = `Zyklus ${state.cycle}`;
-  wraightAnalyze('step');
-}
-
-function resetAll() {
-  state.running = false;
-  state.particles = []; state.sinks = []; state.sources = []; state.stars = [];
-  state.events = []; state.simTime = 0; state.cycle = 0; state.triangle = null;
-  state.hdfCount = 0; state.sense = 'rdy';
-  cycleCountEl.textContent = 'Zyklus 0';
-  statusLed.className = 'off';
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  outputEl.textContent = '⟲ Zurückgesetzt';
-  log('⟲ RESET', 'warn');
-}
-
-// ─── 17. LOOP ───────────────────────────────────────────────
-function loopFrame(timestamp) {
-  if (!state.running) return;
-  const dt = Math.min((timestamp - state.lastTime) / 1000, 0.05);
-  state.lastTime = timestamp;
-
-  simStep(dt);
-  render();
-  state.cycle++;
-  cycleCountEl.textContent = `Zyklus ${state.cycle}`;
-
-  if (state.cycle % 10 === 0) {
-    wraightAnalyze('loop');
-  }
-
-  requestAnimationFrame(loopFrame);
-}
-
-// ─── 18. UHR ────────────────────────────────────────────────
-function updateClock() {
-  clockEl.textContent = `⏱️ ${new Date().toLocaleTimeString()}`;
-}
-setInterval(updateClock, 1000); updateClock();
-
-// ─── 19. EVENTS ─────────────────────────────────────────────
-document.getElementById('btnBoot').addEventListener('click', bootAll);
-document.getElementById('btnStep').addEventListener('click', stepSim);
-document.getElementById('btnReset').addEventListener('click', resetAll);
-
-document.getElementById('btnResolve').addEventListener('click', () => {
-  const target = prompt('Auftrag: #SLIDE, #HDFRESPO, #ID');
-  if (target) resolve(target);
-});
-document.getElementById('btnSlide').addEventListener('click', () => resolve('#SLIDE'));
-document.getElementById('btnHdfRespo').addEventListener('click', () => resolve('#HDFRESPO'));
-document.getElementById('btnID').addEventListener('click', () => resolve('#ID'));
-
-let autoInterval = null;
-document.getElementById('btnAuto').addEventListener('click', () => {
-  if (autoInterval) {
-    clearInterval(autoInterval); autoInterval = null;
-    document.getElementById('btnAuto').textContent = '▶ AUTO';
-    log('⏸ AUTO pausiert', 'warn');
-    return;
-  }
-  autoInterval = setInterval(() => {
-    const targets = ['#SLIDE', '#HDFRESPO', '#ID'];
-    resolve(targets[Math.floor(Math.random() * targets.length)]);
-  }, 2500);
-  document.getElementById('btnAuto').textContent = '⏸ STOP';
-  log('▶ AUTO aktiviert', 'ok');
+    running = true;
+    document.getElementById('btnStart').classList.add('active');
+    document.getElementById('holoStatus').textContent = '⟳ läuft';
+    renderHologram(Date.now());
+  }, 300);
 });
 
-document.getElementById('btnSyn').addEventListener('click', () => {
-  initTriangle();
-  log('🔄 SYN neu initialisiert', 'syn');
-});
-
-// ─── 20. TASTATUR ───────────────────────────────────────────
+// ===== TASTATUR =====
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'b') bootAll();
-  if (e.key === ' ') { e.preventDefault(); stepSim(); }
-  if (e.key === 'r') resetAll();
-  if (e.key === '1') resolve('#SLIDE');
-  if (e.key === '2') resolve('#HDFRESPO');
-  if (e.key === '3') resolve('#ID');
-  if (e.key === 'a') document.getElementById('btnAuto').click();
+  if (e.key === ' ') { e.preventDefault(); document.getElementById('btnStart').click(); }
+  if (e.key === '1') setMode(243);
+  if (e.key === '2') setMode(486);
+  if (e.key === '3') setMode(692);
+  if (e.key === 'p' || e.key === 'P') document.getElementById('btnProof').click();
+  if (e.key === 'x' || e.key === 'X') document.getElementById('btnReset').click();
+  if (e.key === 's' || e.key === 'S') doStep();
 });
 
-// ─── 21. INIT ────────────────────────────────────────────────
-state.matrix = build81Matrix();
-render81Matrix();
-renderSense();
-renderCommands();
-log('📁 HDF · 81-Matrix geladen', 'info');
-log('🧠 7SENSE · Zustände geladen', 'info');
-log('⌨️  1=SLIDE  2=HDFRESPO  3=ID  b=Boot  Leertaste=Step  r=Reset  a=Auto', 'warn');
-log('🔺 Klicke BOOT, um die Simulation zu starten', 'warn');
+// ===== INIT =====
+resizeCanvas();
+setTimeout(resizeCanvas, 200);
+updateMath();
+renderHologram(Date.now());
+
+console.log('🔮 HOLOGRAMM-NACHWEIS · 243 · 486 · 692 · MATHEMATISCH');
+console.log('🔢 243 = 3⁵ · 486 = 2×243 · 692 = 243+449');
+console.log('⌨️  1=243  2=486  3=692  p=PROOF  x=Reset  s=Schritt');
 </script>
 
 </body>
