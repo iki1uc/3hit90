@@ -1,153 +1,650 @@
-.
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🔥 ULTIMATE NICK · VIEW · SHOW · ECHO · SYN</title>
 
-📘 Dokumentation · index.html (3hit90)
-CLOSED · NO‑CLONE · BUSINESS
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background: #0a0a0f;
+  color: #c8d0d0;
+  font-family: 'Consolas', 'Courier New', monospace;
+  min-height: 100vh;
+  padding: 12px;
+  background: radial-gradient(ellipse at 50% 50%, #0a0a1a, #000000);
+}
+.container { max-width: 1200px; margin: 0 auto; }
 
-🧩 1. Zweck der Datei
-index.html ist die Start‑ und Steuerseite der 3hit90‑Engine.
-Sie verbindet alle Module zu einem einzigen, kompakten System:
+.header {
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  margin-bottom: 12px;
+}
+.header h1 {
+  font-size: 28px;
+  background: linear-gradient(90deg, #ffaa00, #ff66ff, #00ccff, #00ff88);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 4px;
+}
+.header .sub {
+  color: #445555;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+.header .sub .view { color: #ff66ff; }
+.header .sub .syn { color: #00ff88; }
 
-Initialisierung der Engine
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
 
-Laden der SYN‑Kerne
+.panel {
+  background: rgba(10,10,20,0.3);
+  border: 1px solid rgba(255,255,255,0.02);
+  border-radius: 12px;
+  padding: 14px;
+  backdrop-filter: blur(10px);
+}
+.panel .title {
+  color: #668888;
+  font-size: 10px;
+  letter-spacing: 2px;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+.panel .title .highlight { color: #ffaa00; }
 
-Aktivierung der 3HIT‑Logik
+/* VIEW-CANVAS */
+.view-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: rgba(0,0,0,0.4);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.02);
+  overflow: hidden;
+}
+#viewCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 
-Start der RAW‑Module
+/* SHOW-GRID */
+.show-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 6px;
+  margin-top: 8px;
+}
+@media (max-width:600px){ .show-grid { grid-template-columns:1fr 1fr; } }
 
-Ausführung der Pipeline
+.show-card {
+  background: rgba(10,10,20,0.3);
+  border: 1px solid rgba(255,255,255,0.02);
+  border-radius: 8px;
+  padding: 8px 6px;
+  text-align: center;
+}
+.show-card .icon { font-size: 18px; }
+.show-card .label {
+  color: #445555;
+  font-size: 7px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+.show-card .value {
+  font-size: 13px;
+  font-weight: bold;
+  font-family: monospace;
+  margin-top: 2px;
+}
+.show-card .value.echo { color: #ff66ff; }
+.show-card .value.cause { color: #ffaa00; }
+.show-card .value.effect { color: #00ff88; }
+.show-card .value.figur { color: #00ccff; }
 
-Darstellung der UI‑Elemente
+.controls {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+.controls button {
+  background: rgba(20,35,35,0.2);
+  color: #668888;
+  border: 1px solid rgba(255,255,255,0.02);
+  padding: 4px 14px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 9px;
+  transition: all 0.3s;
+}
+.controls button:hover { background: rgba(40,80,70,0.08); color: #aaeedd; }
+.controls button.active { background: rgba(40,80,70,0.06); color: #00ff88; }
+.controls button.view { color: #ff66ff; border-color: rgba(255,102,255,0.05); }
+.controls button.syn { color: #00ff88; border-color: rgba(0,255,136,0.05); }
 
-Tastatur‑Steuerung
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 12px;
+  margin-top: 8px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  font-size: 8px;
+  color: #445555;
+  border: 1px solid rgba(255,255,255,0.01);
+}
+.status-bar .view { color: #ff66ff; }
+.status-bar .syn { color: #00ff88; }
 
-Auto‑Modus
+.footer {
+  text-align: center;
+  margin-top: 10px;
+  color: #222;
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+.footer span { color: #ff66ff; }
+</style>
+</head>
+<body>
 
-Live‑Status
+<div class="container">
 
-Damit ist index.html der zentrale Einstiegspunkt, der alle Komponenten synchronisiert.
+<div class="header">
+  <h1>🔥 ULTIMATE NICK · VIEW</h1>
+  <div class="sub"><span class="view">SHOW</span> · <span class="syn">ECHO</span> · SYN · WRAIGHT · COACH</div>
+</div>
 
-🧱 2. Geladene Module (über <script>‑Einbindung)
-Modul	Aufgabe
-syn.core.js	Kern der SYN‑Engine (Triangle, Sink, Source)
-syn	Sense‑Zustände, Partikel, Energiefluss
-AIR6D_MOVE.js	6D‑Bewegungslogik für Engine‑Impulse
-pipeline.js	3hit90‑Pipeline‑Controller
-RAW	Rohmodule, TMP‑Daten, Basiswerte
-r.md	Systemnotizen, RAW‑Dokumentation
-syn1.html	Testseite für SYN‑Engine
+<div class="grid-2">
 
+<!-- ===== LINKES PANEL: VIEW ===== -->
+<div class="panel">
+  <div class="title">🎬 <span class="highlight">VIEW</span> · Abbildung</div>
+  <div class="view-wrap">
+    <canvas id="viewCanvas"></canvas>
+  </div>
 
-Alle Module werden von index.html geladen und miteinander verbunden.
+  <div class="show-grid">
+    <div class="show-card">
+      <div class="icon">🎭</div>
+      <div class="label">Figur</div>
+      <div class="value figur" id="figurValue">—</div>
+    </div>
+    <div class="show-card">
+      <div class="icon">⚡</div>
+      <div class="label">Ursache</div>
+      <div class="value cause" id="causeValue">—</div>
+    </div>
+    <div class="show-card">
+      <div class="icon">🌀</div>
+      <div class="label">Wirkung</div>
+      <div class="value effect" id="effectValue">—</div>
+    </div>
+    <div class="show-card">
+      <div class="icon">🔊</div>
+      <div class="label">Echo</div>
+      <div class="value echo" id="echoValue">—</div>
+    </div>
+  </div>
 
-🧩 3. Aufbau der Seite
-3.1 Haupt‑UI
-Die Seite erzeugt ein kompaktes Interface, bestehend aus:
+  <div class="controls">
+    <button class="active view" id="btnStart">▶ START</button>
+    <button class="view" id="btnView">🎬 VIEW</button>
+    <button class="syn" id="btnSyn">🌀 SYN</button>
+    <button class="view" id="btnFigur">🎭 FIGUR</button>
+    <button id="btnProof">🔮 PROOF</button>
+    <button id="btnReset">⟲ RESET</button>
+  </div>
+</div>
 
-Engine‑Status
+<!-- ===== RECHTES PANEL: COACH + WRAIGHT ===== -->
+<div class="panel">
+  <div class="title">🧠 <span class="highlight">WRAIGHT</span> · COACH · RESOLVER</div>
 
-SYN‑Visualisierung
+  <div id="wraightOutput" style="
+    background:rgba(0,0,0,0.3);
+    border:1px solid rgba(255,255,255,0.02);
+    border-radius:8px;
+    padding:10px;
+    font-size:11px;
+    color:#88ddbb;
+    min-height:60px;
+    line-height:1.6;
+    font-family:monospace;
+  ">
+    ⚙️ WRAIGHT-Kernel bereit<br>
+    <span style="color:#445555;">🔺 Klicke VIEW oder SYN</span>
+  </div>
 
-3HIT‑Impulse
+  <div style="margin-top:8px; background:rgba(0,0,0,0.2); border-radius:8px; padding:8px; font-size:9px; color:#668888;">
+    <span style="color:#ffaa00;">📋 COACH · Lebens-Ordner</span><br>
+    🚗 Mobilität & Bewegung · 🏠 Wohnen & Zuhause<br>
+    💼 Arbeit & Zukunft · 🧘 Persönlichkeit & Alltag
+  </div>
 
-RAW‑Datenanzeige
+  <div class="controls" style="margin-top:8px;">
+    <button class="view" id="btnResolve">⚙️ RESOLVE</button>
+    <button class="syn" id="btnSlide">📐 SLIDE</button>
+    <button class="view" id="btnHdfRespo">📊 HDFRESPO</button>
+    <button id="btnID">🆔 ID</button>
+    <button id="btnAuto">▶ AUTO</button>
+  </div>
 
-Pipeline‑Flow
+  <div class="status-bar">
+    <span class="view">🎬 VIEW: <span id="viewStatus">aktiv</span></span>
+    <span class="syn">🌀 SYN: <span id="synStatus">bereit</span></span>
+    <span>⏱️ <span id="timeStatus">00:00</span></span>
+  </div>
+</div>
 
-Live‑Log
+</div>
 
-Die UI ist minimalistisch und vollständig funktional.
+<div class="footer">
+  <span>🔥</span> ULTIMATE NICK · VIEW · SHOW · ECHO · <span>wieimmer4u</span>
+</div>
 
-3.2 SYN‑Engine‑Canvas
-Die SYN‑Engine zeigt:
+</div>
 
-Triangle (Kern)
+<script>
+// ============================================================
+// ULTIMATE NICK · VIEW · SHOW · ECHO · SYN · WRAIGHT
+// ============================================================
 
-Sink (Aufnahme)
+// ===== CANVAS =====
+const canvas = document.getElementById('viewCanvas');
+const ctx = canvas.getContext('2d');
+let running = true;
+let time = 0;
+let viewMode = 'view';
 
-Source (Ausgabe)
+function resizeCanvas() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width || 600;
+  canvas.height = rect.height || (rect.width * 9/16) || 340;
+}
+window.addEventListener('resize', resizeCanvas);
 
-Partikel
+// ===== FIGUREN =====
+const FIGUREN = [
+  { name: 'KREIS', form: 'circle', axis: 1, orbit: 2, pulse: 0.5, symbol: '◉', cause: 'Rotation', effect: 'Stabilität' },
+  { name: 'QUADRAT', form: 'square', axis: 2, orbit: 3, pulse: 0.7, symbol: '■', cause: 'Spannung', effect: 'Struktur' },
+  { name: 'DREIECK', form: 'triangle', axis: 3, orbit: 4, pulse: 0.3, symbol: '▲', cause: 'Druck', effect: 'Form' },
+  { name: 'LINIE', form: 'line', axis: 4, orbit: 1, pulse: 0.9, symbol: '━', cause: 'Bewegung', effect: 'Richtung' },
+  { name: 'PUNKT', form: 'point', axis: 0, orbit: 0, pulse: 1.0, symbol: '●', cause: 'Ursprung', effect: 'Ruhe' },
+  { name: 'SPIRALE', form: 'spiral', axis: 5, orbit: 6, pulse: 0.6, symbol: '🌀', cause: 'Krümmung', effect: 'Flow' },
+  { name: 'STERN', form: 'star', axis: 6, orbit: 8, pulse: 0.8, symbol: '✦', cause: 'Explosion', effect: 'Ausbreitung' },
+];
 
-Energiefluss
+let currentFigur = FIGUREN[0];
+let currentEcho = null;
 
-Damit wird der Systemstatus grafisch dargestellt.
+// ===== SHOW UNIJ =====
+function SHOW_UNIJ(figur) {
+  const t = Date.now();
+  return {
+    identity: "∎ω",
+    figur: figur,
+    layer: figur.layer || null,
+    symbol: figur.symbol || "∎",
+    cause: figur.cause || null,
+    effect: figur.effect || null,
+    echo: {
+      form: figur.form,
+      axis: figur.axis,
+      orbit: figur.orbit,
+      pulse: figur.pulse,
+      time: t
+    },
+    unchanged: true,
+    visible: true,
+    timestamp: t
+  };
+}
 
-3.3 3HIT‑Logik
-Die Engine verarbeitet drei Hauptimpulse:
+// ===== UPDATE SHOW =====
+function updateShow() {
+  const show = SHOW_UNIJ(currentFigur);
+  currentEcho = show.echo;
 
-Hit‑1 → Initialisierung
+  document.getElementById('figurValue').textContent = currentFigur.name;
+  document.getElementById('figurValue').style.color =
+    currentFigur.form === 'circle' ? '#88ddbb' :
+    currentFigur.form === 'square' ? '#ffaa00' :
+    currentFigur.form === 'triangle' ? '#ff66ff' :
+    currentFigur.form === 'line' ? '#00ff88' :
+    currentFigur.form === 'point' ? '#ffffff' :
+    currentFigur.form === 'star' ? '#ffdd00' : '#88ddbb';
 
-Hit‑2 → Verarbeitung
+  document.getElementById('causeValue').textContent = currentFigur.cause;
+  document.getElementById('effectValue').textContent = currentFigur.effect;
+  document.getElementById('echoValue').textContent = `${currentFigur.symbol} · ${currentFigur.form}`;
 
-Hit‑3 → Abschluss
+  document.getElementById('viewStatus').textContent = 'aktiv';
+  document.getElementById('synStatus').textContent = `✓ ${currentFigur.form}`;
 
-Diese Impulse werden über die Pipeline gesteuert.
+  // WRAIGHT Output
+  document.getElementById('wraightOutput').innerHTML = `
+    🧠 WRAIGHT-Kernel · Analyse<br>
+    <span style="color:#ffaa00;">🎭 Figur:</span> ${currentFigur.name}<br>
+    <span style="color:#ffaa00;">⚡ Ursache:</span> ${currentFigur.cause}<br>
+    <span style="color:#00ff88;">🌀 Wirkung:</span> ${currentFigur.effect}<br>
+    <span style="color:#ff66ff;">🔊 Echo:</span> ${currentFigur.form} · ${currentFigur.axis}·${currentFigur.orbit}<br>
+    <span style="color:#445555;">⏱️ ${new Date().toLocaleTimeString()}</span>
+  `;
+}
 
-3.4 RAW‑Panel
-Zeigt:
+// ===== RENDER =====
+function renderView(timestamp) {
+  if (!running) return;
+  time = timestamp || Date.now();
+  const w = canvas.width, h = canvas.height;
+  const cx = w/2, cy = h/2;
+  const maxDim = Math.min(w, h);
 
-TMP‑Daten
+  ctx.clearRect(0, 0, w, h);
 
-Rohwerte
+  // Hintergrund
+  const grad = ctx.createRadialGradient(cx, cy, 10, cx, cy, maxDim * 0.6);
+  grad.addColorStop(0, '#0a0a1a');
+  grad.addColorStop(0.5, '#050510');
+  grad.addColorStop(1, '#000000');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, w, h);
 
-Basisparameter
+  // Figur
+  const fig = currentFigur;
+  const pulse = fig.pulse + Math.sin(time / 2000) * 0.2;
+  const size = maxDim * (0.12 + pulse * 0.12);
+  const rot = time / 3000 * fig.axis;
 
-Engine‑Kontext
+  // Echo-Kreise
+  ctx.strokeStyle = 'rgba(255,255,255,0.02)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i < 4; i++) {
+    const r = size * 0.6 + i * 25;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+  }
 
-Das RAW‑Panel ist die Datenquelle der Engine.
+  // Figur zeichnen
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(rot);
 
-3.5 Live‑Log
-Zeigt:
+  const color = fig.form === 'circle' ? '#88ddbb' :
+    fig.form === 'square' ? '#ffaa00' :
+    fig.form === 'triangle' ? '#ff66ff' :
+    fig.form === 'line' ? '#00ff88' :
+    fig.form === 'point' ? '#ffffff' :
+    fig.form === 'star' ? '#ffdd00' : '#88ddbb';
 
-jeden Schritt
+  ctx.shadowColor = color + '44';
+  ctx.shadowBlur = 40;
+  ctx.strokeStyle = color + '88';
+  ctx.lineWidth = 2;
+  ctx.fillStyle = color + '22';
 
-jeden Impuls
+  if (fig.form === 'circle') {
+    ctx.beginPath();
+    ctx.arc(0, 0, size * 0.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+  } else if (fig.form === 'square') {
+    const s = size * 0.5;
+    ctx.fillRect(-s, -s, s * 2, s * 2);
+    ctx.strokeRect(-s, -s, s * 2, s * 2);
+  } else if (fig.form === 'triangle') {
+    ctx.beginPath();
+    for (let i = 0; i < 3; i++) {
+      const a = (i / 3) * Math.PI * 2 - Math.PI / 2;
+      const x = Math.cos(a) * size * 0.6;
+      const y = Math.sin(a) * size * 0.6;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+  } else if (fig.form === 'line') {
+    ctx.beginPath();
+    ctx.moveTo(-size * 0.8, 0);
+    ctx.lineTo(size * 0.8, 0);
+    ctx.stroke();
+  } else if (fig.form === 'point') {
+    ctx.shadowBlur = 60;
+    ctx.fillStyle = color + '88';
+    ctx.beginPath();
+    ctx.arc(0, 0, size * 0.08, 0, Math.PI * 2);
+    ctx.fill();
+  } else if (fig.form === 'spiral') {
+    ctx.shadowBlur = 30;
+    ctx.beginPath();
+    for (let i = 0; i < 100; i++) {
+      const a = i * 0.12;
+      const r = size * 0.015 * i;
+      const x = Math.cos(a) * r;
+      const y = Math.sin(a) * r;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  } else if (fig.form === 'star') {
+    ctx.shadowBlur = 40;
+    ctx.beginPath();
+    for (let i = 0; i < 10; i++) {
+      const a = (i / 10) * Math.PI * 2 - Math.PI / 2;
+      const r = i % 2 === 0 ? size * 0.6 : size * 0.25;
+      const x = Math.cos(a) * r;
+      const y = Math.sin(a) * r;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+  }
 
-jede SYN‑Analyse
+  ctx.restore();
 
-jede Pipeline‑Aktion
+  // VIEW-Text
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = color + '44';
+  ctx.font = `${maxDim * 0.025}px monospace`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText(`∎ω ${fig.symbol} · ${fig.form} · VIEW`, cx, h - 20);
 
-Damit ist die Engine vollständig transparent.
+  // Uhrzeit
+  const seconds = Math.floor((time / 1000) % 60);
+  const minutes = Math.floor((time / 60000) % 60);
+  document.getElementById('timeStatus').textContent =
+    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
-⚙️ 4. Steuerung (Keyboard)
-Taste	Funktion
-b	Boot (Start der Engine)
-Leertaste	Step (ein Pipeline‑Schritt)
-r	Reset
-1	Hit‑1
-2	Hit‑2
-3	Hit‑3
-a	Auto‑Modus
+  requestAnimationFrame(renderView);
+}
 
+// ===== FIGUR WECHSELN =====
+function nextFigur() {
+  const idx = FIGUREN.indexOf(currentFigur);
+  currentFigur = FIGUREN[(idx + 1) % FIGUREN.length];
+  updateShow();
+  console.log(`🎭 Figur: ${currentFigur.name} · ${currentFigur.form}`);
+}
 
-Damit ist die Seite vollständig interaktiv.
+function randomFigur() {
+  currentFigur = FIGUREN[Math.floor(Math.random() * FIGUREN.length)];
+  updateShow();
+  console.log(`🎭 Figur: ${currentFigur.name} · ${currentFigur.form}`);
+}
 
-🔁 5. Ablauf nach BOOT
-SYN‑Engine wird geladen
+// ===== TOGGLE VIEW =====
+function toggleView() {
+  viewMode = viewMode === 'view' ? 'echo' : 'view';
+  document.getElementById('btnView').textContent = viewMode === 'view' ? '🎬 VIEW' : '🔊 ECHO';
+  document.getElementById('btnView').classList.toggle('active');
+  console.log(`🔊 View-Modus: ${viewMode}`);
+}
 
-RAW‑Module werden aktiviert
+// ===== SYN =====
+function toggleSyn() {
+  const synStatus = document.getElementById('synStatus');
+  if (synStatus.textContent.includes('✓')) {
+    synStatus.textContent = '🌀 aktiv';
+    document.getElementById('btnSyn').classList.add('active');
+    log('🌀 SYN aktiviert');
+  } else {
+    synStatus.textContent = `✓ ${currentFigur.form}`;
+    document.getElementById('btnSyn').classList.remove('active');
+  }
+}
 
-Pipeline startet
+// ===== RESOLVER =====
+const ONE_ROOM = [
+  { id: '#SLIDE', target: 'SLIDE.hdf', dir: '/SLIDE/HDF/' },
+  { id: '#HDFRESPO', target: 'HDFRESPO.hdf', dir: '/HDF/respo/' },
+  { id: '#ID', target: 'ID.hdf', dir: '/SLIDE/ID/' }
+];
 
-3HIT‑Impulse werden bereitgestellt
+function resolve(target) {
+  const found = ONE_ROOM.find(item => item.id === target);
+  if (found) {
+    document.getElementById('wraightOutput').innerHTML = `
+      ⚙️ RESOLVER · ${target}<br>
+      <span style="color:#00ff88;">✅ ${found.target}</span><br>
+      <span style="color:#445555;">📂 ${found.dir}</span>
+    `;
+    console.log(`⚙️ ${target} → ${found.target}`);
+  } else {
+    document.getElementById('wraightOutput').innerHTML = `
+      ❌ RESOLVER · ${target} nicht gefunden
+    `;
+  }
+}
 
-Auto‑Modus übernimmt den Loop
+// ===== PROOF =====
+function showProof() {
+  const proof = document.createElement('div');
+  proof.style.cssText = `
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999; backdrop-filter: blur(20px);
+    font-family: 'Consolas', monospace;
+  `;
+  proof.innerHTML = `
+    <div style="text-align:center; padding:40px; border:1px solid rgba(255,102,255,0.1); border-radius:20px; background:rgba(10,10,20,0.6); max-width:450px;">
+      <div style="font-size:48px; color:#ff66ff;">🔥</div>
+      <div style="color:#ff66ff; font-size:20px; margin:12px 0; letter-spacing:4px;">ULTIMATE NICK · VIEW</div>
+      <div style="color:#88ddbb; font-size:13px; line-height:1.8;">
+        🎭 Figur: ${currentFigur.name}<br>
+        ⚡ Ursache: ${currentFigur.cause}<br>
+        🌀 Wirkung: ${currentFigur.effect}<br>
+        🔊 Echo: ${currentFigur.form} · ${currentFigur.axis}·${currentFigur.orbit}<br>
+        ${currentEcho ? `⏱️ ${new Date(currentEcho.time).toLocaleTimeString()}` : ''}
+      </div>
+      <button onclick="this.parentElement.parentElement.remove()" style="
+        margin-top:14px; background:rgba(20,35,35,0.2); color:#668888;
+        border:1px solid rgba(255,255,255,0.02); padding:6px 20px;
+        border-radius:18px; cursor:pointer; font-family:inherit; font-size:9px;
+      ">⏎ SCHLIESSEN</button>
+    </div>
+  `;
+  document.body.appendChild(proof);
+}
 
-Live‑Log zeigt jede Aktion
+// ===== CONTROLS =====
+document.getElementById('btnStart').addEventListener('click', () => {
+  running = true;
+  document.getElementById('btnStart').classList.add('active');
+  document.getElementById('viewStatus').textContent = 'aktiv';
+  renderView(Date.now());
+});
 
-Alles läuft in einer einzigen HTML‑Seite,
-kompiliert als index.exe.
+document.getElementById('btnView').addEventListener('click', toggleView);
+document.getElementById('btnSyn').addEventListener('click', toggleSyn);
+document.getElementById('btnFigur').addEventListener('click', nextFigur);
 
-🔒 6. CLOSED · NO‑CLONE · BUSINESS
-Diese Dokumentation gilt für eine proprietäre Engine.
+document.getElementById('btnResolve').addEventListener('click', () => {
+  const target = prompt('Auftrag: #SLIDE, #HDFRESPO, #ID');
+  if (target) resolve(target);
+});
+document.getElementById('btnSlide').addEventListener('click', () => resolve('#SLIDE'));
+document.getElementById('btnHdfRespo').addEventListener('click', () => resolve('#HDFRESPO'));
+document.getElementById('btnID').addEventListener('click', () => resolve('#ID'));
 
-CLOSED
-Keine Weitergabe, kein Fork, kein Clone.
+let autoInterval = null;
+document.getElementById('btnAuto').addEventListener('click', () => {
+  if (autoInterval) {
+    clearInterval(autoInterval); autoInterval = null;
+    document.getElementById('btnAuto').textContent = '▶ AUTO';
+    return;
+  }
+  autoInterval = setInterval(() => {
+    const targets = ['#SLIDE', '#HDFRESPO', '#ID'];
+    resolve(targets[Math.floor(Math.random() * targets.length)]);
+  }, 2500);
+  document.getElementById('btnAuto').textContent = '⏸ STOP';
+});
 
-NO‑CLONE
-Repository darf nicht gespiegelt werden.
+document.getElementById('btnProof').addEventListener('click', showProof);
+document.getElementById('btnReset').addEventListener('click', () => {
+  running = false;
+  currentFigur = FIGUREN[0];
+  viewMode = 'view';
+  document.getElementById('btnStart').classList.remove('active');
+  document.getElementById('btnView').textContent = '🎬 VIEW';
+  document.getElementById('btnView').classList.remove('active');
+  document.getElementById('btnSyn').classList.remove('active');
+  document.getElementById('synStatus').textContent = `✓ ${currentFigur.form}`;
+  updateShow();
+  setTimeout(() => {
+    running = true;
+    document.getElementById('btnStart').classList.add('active');
+    document.getElementById('viewStatus').textContent = 'aktiv';
+    renderView(Date.now());
+  }, 300);
+});
 
-BUSINESS
-Nutzung nur mit Genehmigung von iki1uc.
-Branding iki1uc wieimmer bleibt bestehen.
+// ===== TASTATUR =====
+document.addEventListener('keydown', (e) => {
+  if (e.key === ' ') { e.preventDefault(); document.getElementById('btnStart').click(); }
+  if (e.key === 'f' || e.key === 'F') nextFigur();
+  if (e.key === 'r' || e.key === 'R') randomFigur();
+  if (e.key === 'v' || e.key === 'V') document.getElementById('btnView').click();
+  if (e.key === 's' || e.key === 'S') document.getElementById('btnSyn').click();
+  if (e.key === 'p' || e.key === 'P') document.getElementById('btnProof').click();
+  if (e.key === 'x' || e.key === 'X') document.getElementById('btnReset').click();
+  if (e.key === '1') resolve('#SLIDE');
+  if (e.key === '2') resolve('#HDFRESPO');
+  if (e.key === '3') resolve('#ID');
+  if (e.key === 'a') document.getElementById('btnAuto').click();
+});
+
+// ===== INIT =====
+resizeCanvas();
+setTimeout(resizeCanvas, 200);
+updateShow();
+renderView(Date.now());
+
+console.log('🔥 ULTIMATE NICK · VIEW · SHOW · ECHO · SYN');
+console.log('🎭 Figur: KREIS');
+console.log('⌨️  Leertaste=Start  f=Figur  r=Zufall  v=VIEW  s=SYN  p=Proof  x=Reset');
+console.log('⌨️  1=SLIDE  2=HDFRESPO  3=ID  a=Auto');
+</script>
+
+</body>
+</html>
