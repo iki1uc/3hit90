@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🔥 ULTIMATE NICK · VIEW · SHOW · ECHO · SYN</title>
+<title>🔮 HOLOGRAMM · 81³ · U · ZU UNS GERICHTET</title>
 
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
@@ -12,10 +12,24 @@ body {
   color: #c8d0d0;
   font-family: 'Consolas', 'Courier New', monospace;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 12px;
   background: radial-gradient(ellipse at 50% 50%, #0a0a1a, #000000);
+  transition: background 0.8s ease;
 }
-.container { max-width: 1200px; margin: 0 auto; }
+
+.container {
+  max-width: 1100px;
+  width: 100%;
+  background: rgba(10,10,20,0.3);
+  border: 1px solid rgba(0,204,255,0.05);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 100px rgba(0,0,0,0.8);
+}
 
 .header {
   text-align: center;
@@ -25,7 +39,7 @@ body {
 }
 .header h1 {
   font-size: 28px;
-  background: linear-gradient(90deg, #ffaa00, #ff66ff, #00ccff, #00ff88);
+  background: linear-gradient(90deg, #00ccff, #ff66ff, #ffaa00, #00ff88);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 4px;
@@ -35,83 +49,61 @@ body {
   font-size: 11px;
   letter-spacing: 3px;
 }
-.header .sub .view { color: #ff66ff; }
-.header .sub .syn { color: #00ff88; }
+.header .sub .u { color: #ff66ff; }
+.header .sub .hologram { color: #00ff88; }
 
-.grid-2 {
+.dim-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
 }
-@media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+@media (max-width:700px){ .dim-grid { grid-template-columns:1fr 1fr; } }
+@media (max-width:450px){ .dim-grid { grid-template-columns:1fr; } }
 
-.panel {
+.dim-card {
   background: rgba(10,10,20,0.3);
   border: 1px solid rgba(255,255,255,0.02);
-  border-radius: 12px;
-  padding: 14px;
-  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 12px 10px;
+  text-align: center;
+  transition: all 0.4s ease;
 }
-.panel .title {
-  color: #668888;
-  font-size: 10px;
-  letter-spacing: 2px;
-  border-bottom: 1px solid rgba(255,255,255,0.02);
-  padding-bottom: 6px;
-  margin-bottom: 8px;
+.dim-card .icon { font-size: 28px; }
+.dim-card .name {
+  color: #aab;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 4px 0;
 }
-.panel .title .highlight { color: #ffaa00; }
+.dim-card .value {
+  font-size: 28px;
+  font-weight: bold;
+  font-family: monospace;
+}
+.dim-card .desc {
+  color: #445555;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
 
-/* VIEW-CANVAS */
-.view-wrap {
+.holo-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
-  background: rgba(0,0,0,0.4);
-  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  aspect-ratio: 1/1;
+  background: rgba(0,0,0,0.6);
+  border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.02);
   overflow: hidden;
+  box-shadow: inset 0 0 100px rgba(0,204,255,0.01);
 }
-#viewCanvas {
+#holoCanvas {
   width: 100%;
   height: 100%;
   display: block;
 }
-
-/* SHOW-GRID */
-.show-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 6px;
-  margin-top: 8px;
-}
-@media (max-width:600px){ .show-grid { grid-template-columns:1fr 1fr; } }
-
-.show-card {
-  background: rgba(10,10,20,0.3);
-  border: 1px solid rgba(255,255,255,0.02);
-  border-radius: 8px;
-  padding: 8px 6px;
-  text-align: center;
-}
-.show-card .icon { font-size: 18px; }
-.show-card .label {
-  color: #445555;
-  font-size: 7px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 2px;
-}
-.show-card .value {
-  font-size: 13px;
-  font-weight: bold;
-  font-family: monospace;
-  margin-top: 2px;
-}
-.show-card .value.echo { color: #ff66ff; }
-.show-card .value.cause { color: #ffaa00; }
-.show-card .value.effect { color: #00ff88; }
-.show-card .value.figur { color: #00ccff; }
 
 .controls {
   display: flex;
@@ -133,8 +125,8 @@ body {
 }
 .controls button:hover { background: rgba(40,80,70,0.08); color: #aaeedd; }
 .controls button.active { background: rgba(40,80,70,0.06); color: #00ff88; }
-.controls button.view { color: #ff66ff; border-color: rgba(255,102,255,0.05); }
-.controls button.syn { color: #00ff88; border-color: rgba(0,255,136,0.05); }
+.controls button.u { color: #ff66ff; border-color: rgba(255,102,255,0.05); }
+.controls button.holo { color: #00ff88; border-color: rgba(0,255,136,0.05); }
 
 .status-bar {
   display: flex;
@@ -147,8 +139,8 @@ body {
   color: #445555;
   border: 1px solid rgba(255,255,255,0.01);
 }
-.status-bar .view { color: #ff66ff; }
-.status-bar .syn { color: #00ff88; }
+.status-bar .u { color: #ff66ff; }
+.status-bar .holo { color: #00ff88; }
 
 .footer {
   text-align: center;
@@ -162,193 +154,86 @@ body {
 </head>
 <body>
 
-<div class="container">
+<div class="container" id="container">
 
 <div class="header">
-  <h1>🔥 ULTIMATE NICK · VIEW</h1>
-  <div class="sub"><span class="view">SHOW</span> · <span class="syn">ECHO</span> · SYN · WRAIGHT · COACH</div>
+  <h1>🔮 HOLOGRAMM · 81³</h1>
+  <div class="sub"><span class="u">U · ZU UNS GERICHTET</span> · <span class="hologram">81 × 81 × 81</span></div>
 </div>
 
-<div class="grid-2">
-
-<!-- ===== LINKES PANEL: VIEW ===== -->
-<div class="panel">
-  <div class="title">🎬 <span class="highlight">VIEW</span> · Abbildung</div>
-  <div class="view-wrap">
-    <canvas id="viewCanvas"></canvas>
+<div class="dim-grid">
+  <div class="dim-card">
+    <div class="icon">📐</div>
+    <div class="name">Breite · X</div>
+    <div class="value" style="color:#00ccff;">81</div>
+    <div class="desc">Horizontale Ausdehnung</div>
   </div>
-
-  <div class="show-grid">
-    <div class="show-card">
-      <div class="icon">🎭</div>
-      <div class="label">Figur</div>
-      <div class="value figur" id="figurValue">—</div>
-    </div>
-    <div class="show-card">
-      <div class="icon">⚡</div>
-      <div class="label">Ursache</div>
-      <div class="value cause" id="causeValue">—</div>
-    </div>
-    <div class="show-card">
-      <div class="icon">🌀</div>
-      <div class="label">Wirkung</div>
-      <div class="value effect" id="effectValue">—</div>
-    </div>
-    <div class="show-card">
-      <div class="icon">🔊</div>
-      <div class="label">Echo</div>
-      <div class="value echo" id="echoValue">—</div>
-    </div>
+  <div class="dim-card">
+    <div class="icon">📏</div>
+    <div class="name">Höhe · Y</div>
+    <div class="value" style="color:#ff66ff;">81</div>
+    <div class="desc">Vertikale Ausdehnung</div>
   </div>
-
-  <div class="controls">
-    <button class="active view" id="btnStart">▶ START</button>
-    <button class="view" id="btnView">🎬 VIEW</button>
-    <button class="syn" id="btnSyn">🌀 SYN</button>
-    <button class="view" id="btnFigur">🎭 FIGUR</button>
-    <button id="btnProof">🔮 PROOF</button>
-    <button id="btnReset">⟲ RESET</button>
+  <div class="dim-card">
+    <div class="icon">📐</div>
+    <div class="name">Tiefe · Z</div>
+    <div class="value" style="color:#ffaa00;">81</div>
+    <div class="desc">Räumliche Ausdehnung</div>
+  </div>
+  <div class="dim-card">
+    <div class="icon">🌌</div>
+    <div class="name">Gesamt · 81³</div>
+    <div class="value" style="color:#00ff88;">531.441</div>
+    <div class="desc">Vollständiger Raum</div>
   </div>
 </div>
 
-<!-- ===== RECHTES PANEL: COACH + WRAIGHT ===== -->
-<div class="panel">
-  <div class="title">🧠 <span class="highlight">WRAIGHT</span> · COACH · RESOLVER</div>
-
-  <div id="wraightOutput" style="
-    background:rgba(0,0,0,0.3);
-    border:1px solid rgba(255,255,255,0.02);
-    border-radius:8px;
-    padding:10px;
-    font-size:11px;
-    color:#88ddbb;
-    min-height:60px;
-    line-height:1.6;
-    font-family:monospace;
-  ">
-    ⚙️ WRAIGHT-Kernel bereit<br>
-    <span style="color:#445555;">🔺 Klicke VIEW oder SYN</span>
-  </div>
-
-  <div style="margin-top:8px; background:rgba(0,0,0,0.2); border-radius:8px; padding:8px; font-size:9px; color:#668888;">
-    <span style="color:#ffaa00;">📋 COACH · Lebens-Ordner</span><br>
-    🚗 Mobilität & Bewegung · 🏠 Wohnen & Zuhause<br>
-    💼 Arbeit & Zukunft · 🧘 Persönlichkeit & Alltag
-  </div>
-
-  <div class="controls" style="margin-top:8px;">
-    <button class="view" id="btnResolve">⚙️ RESOLVE</button>
-    <button class="syn" id="btnSlide">📐 SLIDE</button>
-    <button class="view" id="btnHdfRespo">📊 HDFRESPO</button>
-    <button id="btnID">🆔 ID</button>
-    <button id="btnAuto">▶ AUTO</button>
-  </div>
-
-  <div class="status-bar">
-    <span class="view">🎬 VIEW: <span id="viewStatus">aktiv</span></span>
-    <span class="syn">🌀 SYN: <span id="synStatus">bereit</span></span>
-    <span>⏱️ <span id="timeStatus">00:00</span></span>
-  </div>
+<div class="holo-wrap">
+  <canvas id="holoCanvas"></canvas>
 </div>
 
+<div class="controls">
+  <button class="active holo" id="btnStart">▶ START</button>
+  <button class="u" id="btnU">🔮 U</button>
+  <button class="holo" id="btnHolo">🌀 HOLO</button>
+  <button id="btnProof">🔮 PROOF</button>
+  <button id="btnReset">⟲ RESET</button>
+</div>
+
+<div class="status-bar">
+  <span class="u">🔮 U: <span id="uStatus">aktiv</span></span>
+  <span class="holo">🌀 81³: <span id="holoStatus">bereit</span></span>
+  <span>⏱️ <span id="timeStatus">00:00</span></span>
 </div>
 
 <div class="footer">
-  <span>🔥</span> ULTIMATE NICK · VIEW · SHOW · ECHO · <span>wieimmer4u</span>
+  <span>🔮</span> HOLOGRAMM · 81³ · U · ZU UNS GERICHTET · <span>wieimmer4u</span>
 </div>
 
 </div>
 
 <script>
 // ============================================================
-// ULTIMATE NICK · VIEW · SHOW · ECHO · SYN · WRAIGHT
+// HOLOGRAMM · 81³ · U · ZU UNS GERICHTET
 // ============================================================
 
 // ===== CANVAS =====
-const canvas = document.getElementById('viewCanvas');
+const canvas = document.getElementById('holoCanvas');
 const ctx = canvas.getContext('2d');
 let running = true;
 let time = 0;
-let viewMode = 'view';
+let uActive = true;
 
 function resizeCanvas() {
   const rect = canvas.parentElement.getBoundingClientRect();
-  canvas.width = rect.width || 600;
-  canvas.height = rect.height || (rect.width * 9/16) || 340;
+  const size = Math.min(rect.width, rect.height, 560);
+  canvas.width = size;
+  canvas.height = size;
 }
 window.addEventListener('resize', resizeCanvas);
 
-// ===== FIGUREN =====
-const FIGUREN = [
-  { name: 'KREIS', form: 'circle', axis: 1, orbit: 2, pulse: 0.5, symbol: '◉', cause: 'Rotation', effect: 'Stabilität' },
-  { name: 'QUADRAT', form: 'square', axis: 2, orbit: 3, pulse: 0.7, symbol: '■', cause: 'Spannung', effect: 'Struktur' },
-  { name: 'DREIECK', form: 'triangle', axis: 3, orbit: 4, pulse: 0.3, symbol: '▲', cause: 'Druck', effect: 'Form' },
-  { name: 'LINIE', form: 'line', axis: 4, orbit: 1, pulse: 0.9, symbol: '━', cause: 'Bewegung', effect: 'Richtung' },
-  { name: 'PUNKT', form: 'point', axis: 0, orbit: 0, pulse: 1.0, symbol: '●', cause: 'Ursprung', effect: 'Ruhe' },
-  { name: 'SPIRALE', form: 'spiral', axis: 5, orbit: 6, pulse: 0.6, symbol: '🌀', cause: 'Krümmung', effect: 'Flow' },
-  { name: 'STERN', form: 'star', axis: 6, orbit: 8, pulse: 0.8, symbol: '✦', cause: 'Explosion', effect: 'Ausbreitung' },
-];
-
-let currentFigur = FIGUREN[0];
-let currentEcho = null;
-
-// ===== SHOW UNIJ =====
-function SHOW_UNIJ(figur) {
-  const t = Date.now();
-  return {
-    identity: "∎ω",
-    figur: figur,
-    layer: figur.layer || null,
-    symbol: figur.symbol || "∎",
-    cause: figur.cause || null,
-    effect: figur.effect || null,
-    echo: {
-      form: figur.form,
-      axis: figur.axis,
-      orbit: figur.orbit,
-      pulse: figur.pulse,
-      time: t
-    },
-    unchanged: true,
-    visible: true,
-    timestamp: t
-  };
-}
-
-// ===== UPDATE SHOW =====
-function updateShow() {
-  const show = SHOW_UNIJ(currentFigur);
-  currentEcho = show.echo;
-
-  document.getElementById('figurValue').textContent = currentFigur.name;
-  document.getElementById('figurValue').style.color =
-    currentFigur.form === 'circle' ? '#88ddbb' :
-    currentFigur.form === 'square' ? '#ffaa00' :
-    currentFigur.form === 'triangle' ? '#ff66ff' :
-    currentFigur.form === 'line' ? '#00ff88' :
-    currentFigur.form === 'point' ? '#ffffff' :
-    currentFigur.form === 'star' ? '#ffdd00' : '#88ddbb';
-
-  document.getElementById('causeValue').textContent = currentFigur.cause;
-  document.getElementById('effectValue').textContent = currentFigur.effect;
-  document.getElementById('echoValue').textContent = `${currentFigur.symbol} · ${currentFigur.form}`;
-
-  document.getElementById('viewStatus').textContent = 'aktiv';
-  document.getElementById('synStatus').textContent = `✓ ${currentFigur.form}`;
-
-  // WRAIGHT Output
-  document.getElementById('wraightOutput').innerHTML = `
-    🧠 WRAIGHT-Kernel · Analyse<br>
-    <span style="color:#ffaa00;">🎭 Figur:</span> ${currentFigur.name}<br>
-    <span style="color:#ffaa00;">⚡ Ursache:</span> ${currentFigur.cause}<br>
-    <span style="color:#00ff88;">🌀 Wirkung:</span> ${currentFigur.effect}<br>
-    <span style="color:#ff66ff;">🔊 Echo:</span> ${currentFigur.form} · ${currentFigur.axis}·${currentFigur.orbit}<br>
-    <span style="color:#445555;">⏱️ ${new Date().toLocaleTimeString()}</span>
-  `;
-}
-
-// ===== RENDER =====
-function renderView(timestamp) {
+// ===== HOLOGRAMM RENDER =====
+function renderHologram(timestamp) {
   if (!running) return;
   time = timestamp || Date.now();
   const w = canvas.width, h = canvas.height;
@@ -365,175 +250,116 @@ function renderView(timestamp) {
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, w, h);
 
-  // Figur
-  const fig = currentFigur;
-  const pulse = fig.pulse + Math.sin(time / 2000) * 0.2;
-  const size = maxDim * (0.12 + pulse * 0.12);
-  const rot = time / 3000 * fig.axis;
+  // ===== 81 × 81 × 81 =====
+  // Simuliert 81³ als 3D-Orbit
+  const layers = 81;
+  const pointsPerLayer = 81;
+  const totalPoints = layers * pointsPerLayer;
 
-  // Echo-Kreise
-  ctx.strokeStyle = 'rgba(255,255,255,0.02)';
-  ctx.lineWidth = 1;
-  for (let i = 0; i < 4; i++) {
-    const r = size * 0.6 + i * 25;
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.stroke();
+  // Farben
+  const colors = ['#00ccff', '#ff66ff', '#ffaa00', '#00ff88'];
+
+  // 81 Tiefen-Ebenen
+  for (let z = 0; z < Math.min(layers, 81); z += 3) {
+    const depth = (z / layers) * 0.8 + 0.1;
+    const radius = maxDim * (0.15 + depth * 0.35);
+    const rotZ = time / (3000 + z * 5);
+    const rotX = time / (4000 + z * 3);
+
+    for (let i = 0; i < pointsPerLayer; i += 2) {
+      const angle = (i / pointsPerLayer) * Math.PI * 2 + rotZ + z * 0.02;
+      const r = radius + Math.sin(angle * 2 + rotX) * 10;
+
+      const x = cx + Math.cos(angle) * r;
+      const y = cy + Math.sin(angle) * r * 0.7 + Math.sin(z * 0.1 + time / 2000) * 20;
+
+      const colorIdx = Math.floor((z + i) % 4);
+      const alpha = 0.1 + (depth * 0.4) + Math.sin(time / 1000 + z + i) * 0.1;
+
+      ctx.shadowColor = colors[colorIdx] + '33';
+      ctx.shadowBlur = 10;
+      ctx.fillStyle = colors[colorIdx] + Math.floor(alpha * 180).toString(16).padStart(2, '0');
+      ctx.beginPath();
+      ctx.arc(x, y, 1 + depth * 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
   }
 
-  // Figur zeichnen
-  ctx.save();
-  ctx.translate(cx, cy);
-  ctx.rotate(rot);
+  // ===== DAS U – ZU UNS GERICHTET =====
+  if (uActive) {
+    const uSize = maxDim * 0.25;
+    const uX = cx;
+    const uY = cy + maxDim * 0.05;
 
-  const color = fig.form === 'circle' ? '#88ddbb' :
-    fig.form === 'square' ? '#ffaa00' :
-    fig.form === 'triangle' ? '#ff66ff' :
-    fig.form === 'line' ? '#00ff88' :
-    fig.form === 'point' ? '#ffffff' :
-    fig.form === 'star' ? '#ffdd00' : '#88ddbb';
-
-  ctx.shadowColor = color + '44';
-  ctx.shadowBlur = 40;
-  ctx.strokeStyle = color + '88';
-  ctx.lineWidth = 2;
-  ctx.fillStyle = color + '22';
-
-  if (fig.form === 'circle') {
-    ctx.beginPath();
-    ctx.arc(0, 0, size * 0.5, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
-  } else if (fig.form === 'square') {
-    const s = size * 0.5;
-    ctx.fillRect(-s, -s, s * 2, s * 2);
-    ctx.strokeRect(-s, -s, s * 2, s * 2);
-  } else if (fig.form === 'triangle') {
-    ctx.beginPath();
-    for (let i = 0; i < 3; i++) {
-      const a = (i / 3) * Math.PI * 2 - Math.PI / 2;
-      const x = Math.cos(a) * size * 0.6;
-      const y = Math.sin(a) * size * 0.6;
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-  } else if (fig.form === 'line') {
-    ctx.beginPath();
-    ctx.moveTo(-size * 0.8, 0);
-    ctx.lineTo(size * 0.8, 0);
-    ctx.stroke();
-  } else if (fig.form === 'point') {
-    ctx.shadowBlur = 60;
-    ctx.fillStyle = color + '88';
-    ctx.beginPath();
-    ctx.arc(0, 0, size * 0.08, 0, Math.PI * 2);
-    ctx.fill();
-  } else if (fig.form === 'spiral') {
-    ctx.shadowBlur = 30;
-    ctx.beginPath();
-    for (let i = 0; i < 100; i++) {
-      const a = i * 0.12;
-      const r = size * 0.015 * i;
-      const x = Math.cos(a) * r;
-      const y = Math.sin(a) * r;
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-  } else if (fig.form === 'star') {
+    // U-Form als Pfad – zu uns gerichtet
+    ctx.shadowColor = '#ff66ff44';
     ctx.shadowBlur = 40;
+    ctx.strokeStyle = '#ff66ff88';
+    ctx.lineWidth = 3 + Math.sin(time / 1000) * 1;
+
     ctx.beginPath();
-    for (let i = 0; i < 10; i++) {
-      const a = (i / 10) * Math.PI * 2 - Math.PI / 2;
-      const r = i % 2 === 0 ? size * 0.6 : size * 0.25;
-      const x = Math.cos(a) * r;
-      const y = Math.sin(a) * r;
-      if (i === 0) ctx.moveTo(x, y);
-      else ctx.lineTo(x, y);
-    }
-    ctx.closePath();
-    ctx.fill();
+    // Linker Schenkel
+    ctx.moveTo(uX - uSize * 0.8, uY + uSize * 0.4);
+    ctx.lineTo(uX - uSize * 0.8, uY - uSize * 0.4);
+    // Boden
+    ctx.quadraticCurveTo(uX, uY - uSize * 0.6, uX + uSize * 0.8, uY - uSize * 0.4);
+    // Rechter Schenkel
+    ctx.lineTo(uX + uSize * 0.8, uY + uSize * 0.4);
     ctx.stroke();
+
+    // U-Glow
+    ctx.shadowBlur = 60;
+    ctx.strokeStyle = '#ff66ff22';
+    ctx.lineWidth = 8;
+    ctx.beginPath();
+    ctx.moveTo(uX - uSize * 0.8, uY + uSize * 0.4);
+    ctx.lineTo(uX - uSize * 0.8, uY - uSize * 0.4);
+    ctx.quadraticCurveTo(uX, uY - uSize * 0.6, uX + uSize * 0.8, uY - uSize * 0.4);
+    ctx.lineTo(uX + uSize * 0.8, uY + uSize * 0.4);
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // U-Text
+    ctx.fillStyle = '#ff66ff66';
+    ctx.font = `${maxDim * 0.025}px monospace`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText('⩇ U · zu uns gerichtet ⩇', cx, uY + uSize * 0.5 + 10);
   }
 
-  ctx.restore();
-
-  // VIEW-Text
-  ctx.shadowBlur = 0;
-  ctx.fillStyle = color + '44';
-  ctx.font = `${maxDim * 0.025}px monospace`;
+  // ===== 81³ Text =====
+  ctx.fillStyle = '#445555';
+  ctx.font = `${maxDim * 0.02}px monospace`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'bottom';
-  ctx.fillText(`∎ω ${fig.symbol} · ${fig.form} · VIEW`, cx, h - 20);
+  ctx.fillText('81 × 81 × 81 = 531.441', cx, h - 20);
 
-  // Uhrzeit
-  const seconds = Math.floor((time / 1000) % 60);
-  const minutes = Math.floor((time / 60000) % 60);
-  document.getElementById('timeStatus').textContent =
-    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  // ===== U-Status =====
+  ctx.fillStyle = uActive ? '#ff66ff44' : '#44555544';
+  ctx.font = `${maxDim * 0.015}px monospace`;
+  ctx.textBaseline = 'top';
+  ctx.fillText(uActive ? '🔮 U aktiv · zu uns gerichtet' : '🔮 U inaktiv', cx, 20);
 
-  requestAnimationFrame(renderView);
+  requestAnimationFrame(renderHologram);
 }
 
-// ===== FIGUR WECHSELN =====
-function nextFigur() {
-  const idx = FIGUREN.indexOf(currentFigur);
-  currentFigur = FIGUREN[(idx + 1) % FIGUREN.length];
-  updateShow();
-  console.log(`🎭 Figur: ${currentFigur.name} · ${currentFigur.form}`);
+// ===== TOGGLE U =====
+function toggleU() {
+  uActive = !uActive;
+  document.getElementById('uStatus').textContent = uActive ? 'aktiv' : 'inaktiv';
+  document.getElementById('btnU').classList.toggle('active');
+  document.getElementById('btnU').textContent = uActive ? '🔮 U·ON' : '🔮 U·OFF';
+  console.log(`🔮 U: ${uActive ? 'AKTIV · zu uns gerichtet' : 'INAKTIV'}`);
 }
 
-function randomFigur() {
-  currentFigur = FIGUREN[Math.floor(Math.random() * FIGUREN.length)];
-  updateShow();
-  console.log(`🎭 Figur: ${currentFigur.name} · ${currentFigur.form}`);
-}
-
-// ===== TOGGLE VIEW =====
-function toggleView() {
-  viewMode = viewMode === 'view' ? 'echo' : 'view';
-  document.getElementById('btnView').textContent = viewMode === 'view' ? '🎬 VIEW' : '🔊 ECHO';
-  document.getElementById('btnView').classList.toggle('active');
-  console.log(`🔊 View-Modus: ${viewMode}`);
-}
-
-// ===== SYN =====
-function toggleSyn() {
-  const synStatus = document.getElementById('synStatus');
-  if (synStatus.textContent.includes('✓')) {
-    synStatus.textContent = '🌀 aktiv';
-    document.getElementById('btnSyn').classList.add('active');
-    log('🌀 SYN aktiviert');
-  } else {
-    synStatus.textContent = `✓ ${currentFigur.form}`;
-    document.getElementById('btnSyn').classList.remove('active');
-  }
-}
-
-// ===== RESOLVER =====
-const ONE_ROOM = [
-  { id: '#SLIDE', target: 'SLIDE.hdf', dir: '/SLIDE/HDF/' },
-  { id: '#HDFRESPO', target: 'HDFRESPO.hdf', dir: '/HDF/respo/' },
-  { id: '#ID', target: 'ID.hdf', dir: '/SLIDE/ID/' }
-];
-
-function resolve(target) {
-  const found = ONE_ROOM.find(item => item.id === target);
-  if (found) {
-    document.getElementById('wraightOutput').innerHTML = `
-      ⚙️ RESOLVER · ${target}<br>
-      <span style="color:#00ff88;">✅ ${found.target}</span><br>
-      <span style="color:#445555;">📂 ${found.dir}</span>
-    `;
-    console.log(`⚙️ ${target} → ${found.target}`);
-  } else {
-    document.getElementById('wraightOutput').innerHTML = `
-      ❌ RESOLVER · ${target} nicht gefunden
-    `;
-  }
+// ===== HOLO =====
+function toggleHolo() {
+  document.getElementById('holoStatus').textContent = '🌀 aktiv';
+  document.getElementById('btnHolo').classList.toggle('active');
+  setTimeout(() => {
+    document.getElementById('holoStatus').textContent = 'bereit';
+  }, 2000);
+  console.log('🌀 HOLOGRAMM aktiviert');
 }
 
 // ===== PROOF =====
@@ -547,14 +373,17 @@ function showProof() {
   `;
   proof.innerHTML = `
     <div style="text-align:center; padding:40px; border:1px solid rgba(255,102,255,0.1); border-radius:20px; background:rgba(10,10,20,0.6); max-width:450px;">
-      <div style="font-size:48px; color:#ff66ff;">🔥</div>
-      <div style="color:#ff66ff; font-size:20px; margin:12px 0; letter-spacing:4px;">ULTIMATE NICK · VIEW</div>
+      <div style="font-size:48px; color:#ff66ff;">🔮</div>
+      <div style="color:#ff66ff; font-size:20px; margin:12px 0; letter-spacing:4px;">HOLOGRAMM · 81³</div>
       <div style="color:#88ddbb; font-size:13px; line-height:1.8;">
-        🎭 Figur: ${currentFigur.name}<br>
-        ⚡ Ursache: ${currentFigur.cause}<br>
-        🌀 Wirkung: ${currentFigur.effect}<br>
-        🔊 Echo: ${currentFigur.form} · ${currentFigur.axis}·${currentFigur.orbit}<br>
-        ${currentEcho ? `⏱️ ${new Date(currentEcho.time).toLocaleTimeString()}` : ''}
+        📐 Breite: 81<br>
+        📏 Höhe: 81<br>
+        📐 Tiefe: 81<br>
+        🌌 Gesamt: 531.441<br>
+        🔮 U: ${uActive ? 'AKTIV · zu uns gerichtet' : 'INAKTIV'}
+      </div>
+      <div style="color:#445555; font-size:10px; margin-top:12px; border-top:1px solid rgba(255,255,255,0.02); padding-top:12px;">
+        DAS HOLOGRAMM IST SICHTBAR
       </div>
       <button onclick="this.parentElement.parentElement.remove()" style="
         margin-top:14px; background:rgba(20,35,35,0.2); color:#668888;
@@ -570,80 +399,47 @@ function showProof() {
 document.getElementById('btnStart').addEventListener('click', () => {
   running = true;
   document.getElementById('btnStart').classList.add('active');
-  document.getElementById('viewStatus').textContent = 'aktiv';
-  renderView(Date.now());
+  document.getElementById('holoStatus').textContent = 'läuft';
+  renderHologram(Date.now());
 });
 
-document.getElementById('btnView').addEventListener('click', toggleView);
-document.getElementById('btnSyn').addEventListener('click', toggleSyn);
-document.getElementById('btnFigur').addEventListener('click', nextFigur);
-
-document.getElementById('btnResolve').addEventListener('click', () => {
-  const target = prompt('Auftrag: #SLIDE, #HDFRESPO, #ID');
-  if (target) resolve(target);
-});
-document.getElementById('btnSlide').addEventListener('click', () => resolve('#SLIDE'));
-document.getElementById('btnHdfRespo').addEventListener('click', () => resolve('#HDFRESPO'));
-document.getElementById('btnID').addEventListener('click', () => resolve('#ID'));
-
-let autoInterval = null;
-document.getElementById('btnAuto').addEventListener('click', () => {
-  if (autoInterval) {
-    clearInterval(autoInterval); autoInterval = null;
-    document.getElementById('btnAuto').textContent = '▶ AUTO';
-    return;
-  }
-  autoInterval = setInterval(() => {
-    const targets = ['#SLIDE', '#HDFRESPO', '#ID'];
-    resolve(targets[Math.floor(Math.random() * targets.length)]);
-  }, 2500);
-  document.getElementById('btnAuto').textContent = '⏸ STOP';
-});
-
+document.getElementById('btnU').addEventListener('click', toggleU);
+document.getElementById('btnHolo').addEventListener('click', toggleHolo);
 document.getElementById('btnProof').addEventListener('click', showProof);
+
 document.getElementById('btnReset').addEventListener('click', () => {
   running = false;
-  currentFigur = FIGUREN[0];
-  viewMode = 'view';
+  uActive = true;
   document.getElementById('btnStart').classList.remove('active');
-  document.getElementById('btnView').textContent = '🎬 VIEW';
-  document.getElementById('btnView').classList.remove('active');
-  document.getElementById('btnSyn').classList.remove('active');
-  document.getElementById('synStatus').textContent = `✓ ${currentFigur.form}`;
-  updateShow();
+  document.getElementById('btnU').textContent = '🔮 U·ON';
+  document.getElementById('btnU').classList.add('active');
+  document.getElementById('uStatus').textContent = 'aktiv';
+  document.getElementById('holoStatus').textContent = 'bereit';
   setTimeout(() => {
     running = true;
     document.getElementById('btnStart').classList.add('active');
-    document.getElementById('viewStatus').textContent = 'aktiv';
-    renderView(Date.now());
+    document.getElementById('holoStatus').textContent = 'läuft';
+    renderHologram(Date.now());
   }, 300);
 });
 
 // ===== TASTATUR =====
 document.addEventListener('keydown', (e) => {
   if (e.key === ' ') { e.preventDefault(); document.getElementById('btnStart').click(); }
-  if (e.key === 'f' || e.key === 'F') nextFigur();
-  if (e.key === 'r' || e.key === 'R') randomFigur();
-  if (e.key === 'v' || e.key === 'V') document.getElementById('btnView').click();
-  if (e.key === 's' || e.key === 'S') document.getElementById('btnSyn').click();
+  if (e.key === 'u' || e.key === 'U') document.getElementById('btnU').click();
+  if (e.key === 'h' || e.key === 'H') document.getElementById('btnHolo').click();
   if (e.key === 'p' || e.key === 'P') document.getElementById('btnProof').click();
   if (e.key === 'x' || e.key === 'X') document.getElementById('btnReset').click();
-  if (e.key === '1') resolve('#SLIDE');
-  if (e.key === '2') resolve('#HDFRESPO');
-  if (e.key === '3') resolve('#ID');
-  if (e.key === 'a') document.getElementById('btnAuto').click();
 });
 
 // ===== INIT =====
 resizeCanvas();
 setTimeout(resizeCanvas, 200);
-updateShow();
-renderView(Date.now());
+renderHologram(Date.now());
 
-console.log('🔥 ULTIMATE NICK · VIEW · SHOW · ECHO · SYN');
-console.log('🎭 Figur: KREIS');
-console.log('⌨️  Leertaste=Start  f=Figur  r=Zufall  v=VIEW  s=SYN  p=Proof  x=Reset');
-console.log('⌨️  1=SLIDE  2=HDFRESPO  3=ID  a=Auto');
+console.log('🔮 HOLOGRAMM · 81³ · U · ZU UNS GERICHTET');
+console.log('📐 81 × 81 × 81 = 531.441');
+console.log('⌨️  Leertaste=Start  u=U  h=HOLO  p=PROOF  x=Reset');
 </script>
 
 </body>
